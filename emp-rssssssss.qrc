@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>../../Images/Captures d’écran/photo2.png</file>
+        <file>../../../Downloads/photo1.png</file>
+    </qresource>
+</RCC>
