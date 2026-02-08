@@ -1,0 +1,1131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ContainerForm</class>
+ <widget class="QDialog" name="ContainerForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>900</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Gestion de Conteneur</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+    background-color: #F7F9FC;
+}
+
+QWidget {
+    font-family: &quot;Segoe UI&quot;, &quot;Arial&quot;;
+}
+
+/* Labels */
+QLabel {
+    color: #1E293B;
+    background: transparent;
+}
+
+/* Line Edits */
+QLineEdit {
+    background-color: white;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 10px 15px;
+    color: #1E293B;
+    font-size: 10pt;
+}
+
+QLineEdit:focus {
+    border-color: #2C5F7C;
+}
+
+QLineEdit:disabled {
+    background-color: #F1F5F9;
+    color: #94A3B8;
+}
+
+/* ComboBox */
+QComboBox {
+    background-color: white;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 10px 15px;
+    color: #1E293B;
+    font-size: 10pt;
+}
+
+QComboBox:focus {
+    border-color: #2C5F7C;
+}
+
+QComboBox::drop-down {
+    border: none;
+    width: 30px;
+}
+
+QComboBox::down-arrow {
+    image: none;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #64748B;
+    margin-right: 10px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: white;
+    border: 1.5px solid #E2E8F0;
+    selection-background-color: #F0F7FF;
+    selection-color: #1E293B;
+    outline: none;
+}
+
+/* Spin Box */
+QSpinBox, QDoubleSpinBox {
+    background-color: white;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 10px 15px;
+    color: #1E293B;
+    font-size: 10pt;
+}
+
+QSpinBox:focus, QDoubleSpinBox:focus {
+    border-color: #2C5F7C;
+}
+
+/* Date Edit */
+QDateEdit {
+    background-color: white;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 10px 15px;
+    color: #1E293B;
+    font-size: 10pt;
+}
+
+QDateEdit:focus {
+    border-color: #2C5F7C;
+}
+
+QDateEdit::drop-down {
+    border: none;
+    width: 30px;
+}
+
+QDateEdit::down-arrow {
+    image: none;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #64748B;
+    margin-right: 10px;
+}
+
+/* Checkboxes */
+QCheckBox {
+    color: #1E293B;
+    spacing: 8px;
+    font-size: 10pt;
+}
+
+QCheckBox::indicator {
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 5px;
+    background-color: white;
+}
+
+QCheckBox::indicator:checked {
+    background-color: #2C5F7C;
+    border-color: #2C5F7C;
+    image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMiAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEgNUw0LjUgOC41TDExIDEiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo=);
+}
+
+QCheckBox::indicator:hover {
+    border-color: #2C5F7C;
+}
+
+/* Scroll Area */
+QScrollArea {
+    border: none;
+    background-color: transparent;
+}
+
+QScrollBar:vertical {
+    background: transparent;
+    width: 10px;
+    margin: 0;
+}
+
+QScrollBar::handle:vertical {
+    background: #CBD5E1;
+    border-radius: 5px;
+    min-height: 30px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #94A3B8;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical,
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: none;
+    border: none;
+}</string>
+  </property>
+  
+  <widget class="QScrollArea" name="scrollArea">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>900</height>
+    </rect>
+   </property>
+   <property name="widgetResizable">
+    <bool>true</bool>
+   </property>
+   <widget class="QWidget" name="scrollAreaWidgetContents">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>780</width>
+      <height>1360</height>
+     </rect>
+    </property>
+    
+    <!-- Header Frame -->
+    <widget class="QFrame" name="headerFrame">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>30</y>
+       <width>700</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QFrame#headerFrame {
+    background: transparent;
+    border: none;
+}</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Shape::NoFrame</enum>
+     </property>
+     
+     <widget class="QLabel" name="labelFormTitle">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>700</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>22</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: #1E293B;</string>
+      </property>
+      <property name="text">
+       <string>📦 Ajouter un Conteneur</string>
+      </property>
+     </widget>
+     
+     <widget class="QLabel" name="labelFormSubtitle">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>50</y>
+        <width>700</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: #64748B;</string>
+      </property>
+      <property name="text">
+       <string>Remplissez les informations du nouveau conteneur</string>
+      </property>
+     </widget>
+    </widget>
+    
+    <!-- Main Form Frame -->
+    <widget class="QFrame" name="formFrame">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>130</y>
+       <width>700</width>
+       <height>1120</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QFrame#formFrame {
+    background-color: white;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+}</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Shape::StyledPanel</enum>
+     </property>
+     
+     
+     <!-- Capacite -->
+     <widget class="QLabel" name="labelCapacite">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>30</y>
+        <width>300</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Capacité *</string>
+      </property>
+     </widget>
+     
+     <widget class="QComboBox" name="comboCapacite">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>60</y>
+        <width>300</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>120L</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>240L</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>660L</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>1100L</string>
+       </property>
+      </item>
+     </widget>
+     
+     <!-- Type Propriete -->
+     <widget class="QLabel" name="labelTypePropriete">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>30</y>
+        <width>300</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Type de Propriété *</string>
+      </property>
+     </widget>
+     
+     <widget class="QComboBox" name="comboTypePropriete">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>60</y>
+        <width>300</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>Public</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Privé-Entreprise</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Privé-Résidentiel</string>
+       </property>
+      </item>
+     </widget>
+     
+     <!-- Section: Localisation -->
+     <widget class="QLabel" name="labelSectionLocalisation">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>130</y>
+        <width>640</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: #274C77;
+border-bottom: 2px solid #E2E8F0;
+padding-bottom: 8px;</string>
+      </property>
+      <property name="text">
+       <string>📍 Localisation</string>
+      </property>
+     </widget>
+     
+     <!-- Adresse Complete -->
+     <widget class="QLabel" name="labelAdresse">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>175</y>
+        <width>640</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Adresse Complète *</string>
+      </property>
+     </widget>
+     
+     <widget class="QLineEdit" name="inputAdresse">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>205</y>
+        <width>640</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>Ex: 123 Rue de la République, 75001 Paris</string>
+      </property>
+     </widget>
+     
+     <!-- Localisation GPS -->
+     <widget class="QLabel" name="labelGPSLatitude">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>265</y>
+        <width>300</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Latitude</string>
+      </property>
+     </widget>
+     
+     <widget class="QDoubleSpinBox" name="spinLatitude">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>295</y>
+        <width>300</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="decimals">
+       <number>6</number>
+      </property>
+      <property name="minimum">
+       <double>-90.000000000000000</double>
+      </property>
+      <property name="maximum">
+       <double>90.000000000000000</double>
+      </property>
+      <property name="value">
+       <double>48.856614000000000</double>
+      </property>
+     </widget>
+     
+     <widget class="QLabel" name="labelGPSLongitude">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>265</y>
+        <width>300</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Longitude</string>
+      </property>
+     </widget>
+     
+     <widget class="QDoubleSpinBox" name="spinLongitude">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>295</y>
+        <width>300</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="decimals">
+       <number>6</number>
+      </property>
+      <property name="minimum">
+       <double>-180.000000000000000</double>
+      </property>
+      <property name="maximum">
+       <double>180.000000000000000</double>
+      </property>
+      <property name="value">
+       <double>2.352222000000000</double>
+      </property>
+     </widget>
+     
+     <!-- Section: Types de Déchets Acceptés -->
+     <widget class="QLabel" name="labelSectionDechets">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>365</y>
+        <width>640</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: #274C77;
+border-bottom: 2px solid #E2E8F0;
+padding-bottom: 8px;</string>
+      </property>
+      <property name="text">
+       <string>♻️ Types de Déchets Acceptés</string>
+      </property>
+     </widget>
+     
+     <!-- Checkboxes for waste types -->
+     <widget class="QCheckBox" name="checkAccepteMenager">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>410</y>
+        <width>300</width>
+        <height>35</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>🗑️ Déchets Ménagers</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+     
+     <widget class="QCheckBox" name="checkAccepteRecyclable">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>410</y>
+        <width>300</width>
+        <height>35</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>♻️ Déchets Recyclables</string>
+      </property>
+     </widget>
+     
+     <widget class="QCheckBox" name="checkAccepteOrganique">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>455</y>
+        <width>300</width>
+        <height>35</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>🌱 Déchets Organiques</string>
+      </property>
+     </widget>
+     
+     <widget class="QCheckBox" name="checkAccepteIndustriel">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>455</y>
+        <width>300</width>
+        <height>35</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>🏭 Déchets Industriels</string>
+      </property>
+     </widget>
+     
+     <!-- Section: État et Monitoring -->
+     <widget class="QLabel" name="labelSectionEtat">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>515</y>
+        <width>640</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: #274C77;
+border-bottom: 2px solid #E2E8F0;
+padding-bottom: 8px;</string>
+      </property>
+      <property name="text">
+       <string>📊 État et Monitoring</string>
+      </property>
+     </widget>
+     
+     <!-- Niveau de Remplissage -->
+     <widget class="QLabel" name="labelNiveauRemplissage">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>560</y>
+        <width>300</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Niveau de Remplissage (%)</string>
+      </property>
+     </widget>
+     
+     <widget class="QSpinBox" name="spinNiveauRemplissage">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>590</y>
+        <width>300</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="suffix">
+       <string> %</string>
+      </property>
+      <property name="minimum">
+       <number>0</number>
+      </property>
+      <property name="maximum">
+       <number>100</number>
+      </property>
+      <property name="value">
+       <number>0</number>
+      </property>
+     </widget>
+     
+     <!-- Temperature Interne -->
+     <widget class="QLabel" name="labelTemperature">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>560</y>
+        <width>300</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Température Interne (°C)</string>
+      </property>
+     </widget>
+     
+     <widget class="QDoubleSpinBox" name="spinTemperature">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>590</y>
+        <width>300</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="suffix">
+       <string> °C</string>
+      </property>
+      <property name="decimals">
+       <number>1</number>
+      </property>
+      <property name="minimum">
+       <double>-20.000000000000000</double>
+      </property>
+      <property name="maximum">
+       <double>100.000000000000000</double>
+      </property>
+      <property name="value">
+       <double>20.000000000000000</double>
+      </property>
+     </widget>
+     
+     <!-- Etat -->
+     <widget class="QLabel" name="labelEtat">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>650</y>
+        <width>300</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>État du Conteneur *</string>
+      </property>
+     </widget>
+     
+     <widget class="QComboBox" name="comboEtat">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>680</y>
+        <width>300</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>✅ Opérationnel</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>⚠️ Plein</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>🔧 Maintenance</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>❌ Hors Service</string>
+       </property>
+      </item>
+     </widget>
+     
+     <!-- Date Derniere Collecte -->
+     <widget class="QLabel" name="labelDateCollecte">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>650</y>
+        <width>300</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Date Dernière Collecte</string>
+      </property>
+     </widget>
+     
+     <widget class="QDateEdit" name="dateLastCollecte">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>680</y>
+        <width>300</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="calendarPopup">
+       <bool>true</bool>
+      </property>
+      <property name="displayFormat">
+       <string>dd/MM/yyyy</string>
+      </property>
+     </widget>
+     
+     <!-- Divider Line -->
+     <widget class="QFrame" name="dividerLine">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>750</y>
+        <width>640</width>
+        <height>1</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #E2E8F0;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::HLine</enum>
+      </property>
+     </widget>
+     
+     <!-- Info Note -->
+     <widget class="QLabel" name="labelInfoNote">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>770</y>
+        <width>640</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: #64748B;
+background-color: #F8FAFC;
+border-radius: 8px;
+padding: 12px;</string>
+      </property>
+      <property name="text">
+       <string>ℹ️ Les champs marqués d'un astérisque (*) sont obligatoires.
+Les données GPS peuvent être ajustées automatiquement en fonction de l'adresse.</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+      </property>
+     </widget>
+     
+     <!-- Action Buttons Frame -->
+     <widget class="QFrame" name="buttonsFrame">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>860</y>
+        <width>640</width>
+        <height>240</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QFrame#buttonsFrame {
+    background: transparent;
+    border: none;
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::NoFrame</enum>
+      </property>
+      
+      <!-- Preview Button -->
+      <widget class="QPushButton" name="btnPreview">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>305</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: #F0F7FF;
+    color: #2C5F7C;
+    border: 1.5px solid #2C5F7C;
+    border-radius: 10px;
+    padding: 12px 20px;
+}
+
+QPushButton:hover {
+    background-color: #E0F0FF;
+}
+
+QPushButton:pressed {
+    background-color: #D0E8FF;
+}</string>
+       </property>
+       <property name="text">
+        <string>👁️ Prévisualiser</string>
+       </property>
+      </widget>
+      
+      <!-- Clear Button -->
+      <widget class="QPushButton" name="btnClear">
+       <property name="geometry">
+        <rect>
+         <x>335</x>
+         <y>0</y>
+         <width>305</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: #FEF3C7;
+    color: #92400E;
+    border: 1.5px solid #F59E0B;
+    border-radius: 10px;
+    padding: 12px 20px;
+}
+
+QPushButton:hover {
+    background-color: #FDE68A;
+}
+
+QPushButton:pressed {
+    background-color: #FCD34D;
+}</string>
+       </property>
+       <property name="text">
+        <string>🔄 Réinitialiser</string>
+       </property>
+      </widget>
+      
+      <!-- Submit Button (Primary Action) -->
+      <widget class="QPushButton" name="btnSubmit">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>65</y>
+         <width>640</width>
+         <height>55</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 #10B981,
+        stop:0.5 #059669,
+        stop:1 #047857
+    );
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 14px 24px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 #34D399,
+        stop:0.5 #10B981,
+        stop:1 #059669
+    );
+}
+
+QPushButton:pressed {
+    background: #047857;
+}
+
+QPushButton:disabled {
+    background: #CBD5E1;
+    color: #94A3B8;
+}</string>
+       </property>
+       <property name="text">
+        <string>✅ Soumettre et Enregistrer</string>
+       </property>
+      </widget>
+      
+      <!-- Save Button (Secondary) -->
+      <widget class="QPushButton" name="btnSave">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>135</y>
+         <width>640</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 #0A1F33,
+        stop:0.5 #163A5F,
+        stop:1 #274C77
+    );
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 20px;
+}
+
+QPushButton:hover {
+    background: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 #163A5F,
+        stop:0.5 #274C77,
+        stop:1 #2C5F7C
+    );
+}
+
+QPushButton:pressed {
+    background: #0A1F33;
+}
+
+QPushButton:disabled {
+    background: #CBD5E1;
+    color: #94A3B8;
+}</string>
+       </property>
+       <property name="text">
+        <string>💾 Enregistrer Brouillon</string>
+       </property>
+      </widget>
+      
+      <!-- Cancel Button -->
+      <widget class="QPushButton" name="btnCancel">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>200</y>
+         <width>640</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>9</pointsize>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: transparent;
+    color: #64748B;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 16px;
+}
+
+QPushButton:hover {
+    background-color: #F1F5F9;
+    color: #1E293B;
+}
+
+QPushButton:pressed {
+    background-color: #E2E8F0;
+}</string>
+       </property>
+       <property name="text">
+        <string>Annuler</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
