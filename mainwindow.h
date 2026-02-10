@@ -30,6 +30,18 @@ private slots:
 
     void on_pushButton_31_clicked();
 
+    void on_cnx_clicked();
+
+    void on_cnx1_clicked();
+
+    void on_cnxemp_clicked();
+
+    void on_dec_clicked();
+
+    void on_mdp_clicked();
+
+    void on_retour_2_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
