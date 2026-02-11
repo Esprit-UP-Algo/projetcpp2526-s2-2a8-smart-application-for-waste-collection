@@ -42,6 +42,14 @@ private slots:
 
     void on_retour_2_clicked();
 
+    void on_acceuil_2_clicked();
+
+    void on_pushButton_40_clicked();
+
+    void on_dec_2_clicked();
+
+    void on_pushButton_28_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
