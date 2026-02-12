@@ -6,453 +6,562 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1632</width>
-    <height>968</height>
+    <width>1682</width>
+    <height>992</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QStackedWidget" name="stackedWidget">
+   <widget class="QWidget" name="searchBox_7" native="true">
     <property name="geometry">
      <rect>
-      <x>-10</x>
-      <y>-10</y>
-      <width>1591</width>
-      <height>931</height>
+      <x>0</x>
+      <y>0</y>
+      <width>311</width>
+      <height>951</height>
      </rect>
     </property>
-    <property name="currentIndex">
-     <number>2</number>
-    </property>
-    <widget class="QWidget" name="page">
-     <widget class="QFrame" name="frame_42">
-      <property name="geometry">
-       <rect>
-        <x>-40</x>
-        <y>-10</y>
-        <width>1581</width>
-        <height>951</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: qlineargradient(
+    <property name="styleSheet">
+     <string notr="true">background-color: qlineargradient(
     spread:pad,
     x1:0, y1:0,
     x2:0, y2:1,
     stop:0 #0A1F33,
     stop:0.5 #163A5F,
     stop:1 #274C77
-);</string>
+);
+</string>
+    </property>
+    <widget class="QFrame" name="frame_20">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>20</y>
+       <width>251</width>
+       <height>841</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">  background-color: #FFFFFF; /* fond blanc */
+    border-radius: 20px;       /* coins arrondis */
+    border: 2px solid rgba(44, 95, 124, 0.08); /* bord gris clair */</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Shape::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Shadow::Raised</enum>
+     </property>
+     <widget class="QPushButton" name="pushButton_35">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>510</y>
+        <width>221</width>
+        <height>51</height>
+       </rect>
       </property>
-      <property name="frameShape">
-       <enum>QFrame::Shape::StyledPanel</enum>
+      <property name="font">
+       <font>
+        <pointsize>-1</pointsize>
+        <italic>false</italic>
+        <fontweight>DemiBold</fontweight>
+       </font>
       </property>
-      <property name="frameShadow">
-       <enum>QFrame::Shadow::Raised</enum>
-      </property>
-      <widget class="QFrame" name="frame_43">
-       <property name="geometry">
-        <rect>
-         <x>510</x>
-         <y>210</y>
-         <width>801</width>
-         <height>511</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QFrame#frame_login {
-    background: qlineargradient(
-        x1:0, y1:0,
-        x2:1, y2:1,
-        stop:0 #0B2A3F,
-        stop:0.5 #123F63,
-        stop:1 #1C5D8C
-    );
-    border-radius: 20px;
-    padding: 20px;
-    border: 1px solid rgba(255,255,255,120);
-}
-</string>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
-       </property>
-       <widget class="QLineEdit" name="lineEdit_39">
-        <property name="geometry">
-         <rect>
-          <x>130</x>
-          <y>210</y>
-          <width>551</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLineEdit {
-    background-color: #F9FBFD;          /* fond clair élégant */
-    border: 2px solid #3A6EA5;           /* bleu marine clair */
-    border-radius: 12px;
-    padding: 10px 14px;
-    color: #0A1F33;                      /* texte bleu marine foncé */
-    font-size: 14px;
-    font-weight: 500;
-}
-
-/* Quand le champ est sélectionné */
-QLineEdit:focus {
-    background-color: white;
-    border: 2px solid #1E3A5F;           /* focus plus foncé */
-}
-
-/* Hover */
-QLineEdit:hover {
-    border: 2px solid #2F5D8A;
-}
-</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lineEdit_40">
-        <property name="geometry">
-         <rect>
-          <x>130</x>
-          <y>320</y>
-          <width>551</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLineEdit {
-    background-color: #F9FBFD;          /* fond clair élégant */
-    border: 2px solid #3A6EA5;           /* bleu marine clair */
-    border-radius: 12px;
-    padding: 10px 14px;
-    color: #0A1F33;                      /* texte bleu marine foncé */
-    font-size: 14px;
-    font-weight: 500;
-}
-
-/* Quand le champ est sélectionné */
-QLineEdit:focus {
-    background-color: white;
-    border: 2px solid #1E3A5F;           /* focus plus foncé */
-}
-
-/* Hover */
-QLineEdit:hover {
-    border: 2px solid #2F5D8A;
-}
-</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_134">
-        <property name="geometry">
-         <rect>
-          <x>290</x>
-          <y>20</y>
-          <width>431</width>
-          <height>81</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>Leelawadee UI</family>
-          <pointsize>24</pointsize>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: #FFFFFF
-;
-
-border: 0px;
-outline: 0;
-background: transparent;
-</string>
-        </property>
-        <property name="lineWidth">
-         <number>0</number>
-        </property>
-        <property name="text">
-         <string>connextion</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_135">
-        <property name="geometry">
-         <rect>
-          <x>140</x>
-          <y>140</y>
-          <width>441</width>
-          <height>101</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>Leelawadee UI</family>
-          <pointsize>11</pointsize>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">
-color: #FFFFFF
-;
-border: 0px;
-outline: 0;
-background: transparent;
-</string>
-        </property>
-        <property name="text">
-         <string>Adresse email:</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_136">
-        <property name="geometry">
-         <rect>
-          <x>130</x>
-          <y>250</y>
-          <width>441</width>
-          <height>91</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>Leelawadee UI</family>
-          <pointsize>11</pointsize>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">
-color: #FFFFFF
-;
-border: 0px;
-outline: 0;
-background: transparent;
-</string>
-        </property>
-        <property name="text">
-         <string>Mot de passe:</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="mdp">
-        <property name="geometry">
-         <rect>
-          <x>410</x>
-          <y>390</y>
-          <width>221</width>
-          <height>71</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
     background-color: qlineargradient(
         x1:0, y1:0,
         x2:0, y2:1,
-        stop:0 #1B3A2F,
-        stop:0.5 #276646,
-        stop:1 #1E4D36
+        stop:0 #2C5F7C,
+        stop:0.5 #3A6EA5,
+        stop:1 #1B3A57
     );
+
     color: white;
     font-size: 14px;
-    font-weight: 700;      /* un peu plus bold pour valider */
-    text-transform: uppercase;  /* donne un effet bouton d’action */
+    font-weight: 600;
+
     border: none;
-    border-radius: 12px;
-    padding: 10px 22px;     /* garde la même taille */
-    cursor: pointer;        /* main au survol */
-    transition: all 0.2s ease-in-out; /* effet smooth hover */
+    border-radius: 14px;
+
+    padding: 10px 22px;
 }
 
-/* ✨ Hover : lumière douce */
+/* ✨ HOVER : lumière douce */
 QPushButton:hover {
     background-color: qlineargradient(
         x1:0, y1:0,
         x2:0, y2:1,
-        stop:0 #276646,
-        stop:0.5 #34885A,
-        stop:1 #1B3A2F
+        stop:0 #3A6EA5,
+        stop:0.5 #4A86C5,
+        stop:1 #2C5F7C
     );
-    transform: scale(1.03);  /* effet léger au survol */
 }
 
-/* 🔘 Click (pressed) */
+/* 🔘 CLICK (pressed) */
 QPushButton:pressed {
     background-color: qlineargradient(
         x1:0, y1:0,
         x2:0, y2:1,
-        stop:0 #1E4D36,
-        stop:1 #1B3A2F
+        stop:0 #1B3A57,
+        stop:1 #2C5F7C
     );
-    transform: scale(0.98); /* effet click */
 }
 
 /* 🚫 Désactivé */
 QPushButton:disabled {
-    background-color: #A3B7A1;
-    color: #6E7F70;
-    cursor: default;
+    background-color: #C8D3DF;
+    color: #6E7F91;
 }
 </string>
-        </property>
-        <property name="text">
-         <string>❌Mot de passe oublier</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="cnxemp">
-        <property name="geometry">
-         <rect>
-          <x>180</x>
-          <y>390</y>
-          <width>221</width>
-          <height>71</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #1B3A2F,
-        stop:0.5 #276646,
-        stop:1 #1E4D36
-    );
-    color: white;
-    font-size: 14px;
-    font-weight: 700;      /* un peu plus bold pour valider */
-    text-transform: uppercase;  /* donne un effet bouton d’action */
-    border: none;
-    border-radius: 12px;
-    padding: 10px 22px;     /* garde la même taille */
-    cursor: pointer;        /* main au survol */
-    transition: all 0.2s ease-in-out; /* effet smooth hover */
-}
-
-/* ✨ Hover : lumière douce */
-QPushButton:hover {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #276646,
-        stop:0.5 #34885A,
-        stop:1 #1B3A2F
-    );
-    transform: scale(1.03);  /* effet léger au survol */
-}
-
-/* 🔘 Click (pressed) */
-QPushButton:pressed {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #1E4D36,
-        stop:1 #1B3A2F
-    );
-    transform: scale(0.98); /* effet click */
-}
-
-/* 🚫 Désactivé */
-QPushButton:disabled {
-    background-color: #A3B7A1;
-    color: #6E7F70;
-    cursor: default;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>✅connextion</string>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QLabel" name="label_137">
-       <property name="geometry">
-        <rect>
-         <x>-100</x>
-         <y>0</y>
-         <width>1681</width>
-         <height>1081</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border: 0px;
-outline: 0;
-background: transparent;
-</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="pixmap">
-        <pixmap resource="rs_employe.qrc">:/im2.jpg</pixmap>
-       </property>
-       <property name="scaledContents">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_138">
-       <property name="geometry">
-        <rect>
-         <x>230</x>
-         <y>300</y>
-         <width>391</width>
-         <height>351</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">
-border: 0px;
-outline: 0;
-background: transparent;
-</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="pixmap">
-        <pixmap resource="rs_employe.qrc">:/aa.png</pixmap>
-       </property>
-       <property name="scaledContents">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <zorder>label_137</zorder>
-      <zorder>frame_43</zorder>
-      <zorder>label_138</zorder>
+      </property>
+      <property name="text">
+       <string>🚛tournees</string>
+      </property>
      </widget>
-    </widget>
-    <widget class="QWidget" name="page_2">
-     <widget class="QFrame" name="frame_39">
+     <widget class="QPushButton" name="pushButton_36">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>330</y>
+        <width>221</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>-1</pointsize>
+        <italic>false</italic>
+        <fontweight>DemiBold</fontweight>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #2C5F7C,
+        stop:0.5 #3A6EA5,
+        stop:1 #1B3A57
+    );
+
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+
+    border: none;
+    border-radius: 14px;
+
+    padding: 10px 22px;
+}
+
+/* ✨ HOVER : lumière douce */
+QPushButton:hover {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #3A6EA5,
+        stop:0.5 #4A86C5,
+        stop:1 #2C5F7C
+    );
+}
+
+/* 🔘 CLICK (pressed) */
+QPushButton:pressed {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #1B3A57,
+        stop:1 #2C5F7C
+    );
+}
+
+/* 🚫 Désactivé */
+QPushButton:disabled {
+    background-color: #C8D3DF;
+    color: #6E7F91;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>🧑🏻‍💻employés</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_37">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>390</y>
+        <width>221</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>-1</pointsize>
+        <italic>false</italic>
+        <fontweight>DemiBold</fontweight>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #2C5F7C,
+        stop:0.5 #3A6EA5,
+        stop:1 #1B3A57
+    );
+
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+
+    border: none;
+    border-radius: 14px;
+
+    padding: 10px 22px;
+}
+
+/* ✨ HOVER : lumière douce */
+QPushButton:hover {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #3A6EA5,
+        stop:0.5 #4A86C5,
+        stop:1 #2C5F7C
+    );
+}
+
+/* 🔘 CLICK (pressed) */
+QPushButton:pressed {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #1B3A57,
+        stop:1 #2C5F7C
+    );
+}
+
+/* 🚫 Désactivé */
+QPushButton:disabled {
+    background-color: #C8D3DF;
+    color: #6E7F91;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>🧑‍🧑‍🧒‍🧒clients</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_38">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>450</y>
+        <width>221</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>-1</pointsize>
+        <italic>false</italic>
+        <fontweight>DemiBold</fontweight>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #2C5F7C,
+        stop:0.5 #3A6EA5,
+        stop:1 #1B3A57
+    );
+
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+
+    border: none;
+    border-radius: 14px;
+
+    padding: 10px 22px;
+}
+
+/* ✨ HOVER : lumière douce */
+QPushButton:hover {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #3A6EA5,
+        stop:0.5 #4A86C5,
+        stop:1 #2C5F7C
+    );
+}
+
+/* 🔘 CLICK (pressed) */
+QPushButton:pressed {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #1B3A57,
+        stop:1 #2C5F7C
+    );
+}
+
+/* 🚫 Désactivé */
+QPushButton:disabled {
+    background-color: #C8D3DF;
+    color: #6E7F91;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>🚮conteneurs</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="acceuil">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>270</y>
+        <width>221</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>-1</pointsize>
+        <italic>false</italic>
+        <fontweight>DemiBold</fontweight>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #2C5F7C,
+        stop:0.5 #3A6EA5,
+        stop:1 #1B3A57
+    );
+
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+
+    border: none;
+    border-radius: 14px;
+
+    padding: 10px 22px;
+}
+
+/* ✨ HOVER : lumière douce */
+QPushButton:hover {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #3A6EA5,
+        stop:0.5 #4A86C5,
+        stop:1 #2C5F7C
+    );
+}
+
+/* 🔘 CLICK (pressed) */
+QPushButton:pressed {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #1B3A57,
+        stop:1 #2C5F7C
+    );
+}
+
+/* 🚫 Désactivé */
+QPushButton:disabled {
+    background-color: #C8D3DF;
+    color: #6E7F91;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>💡acceuil</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_45">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>570</y>
+        <width>221</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>-1</pointsize>
+        <italic>false</italic>
+        <fontweight>DemiBold</fontweight>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #2C5F7C,
+        stop:0.5 #3A6EA5,
+        stop:1 #1B3A57
+    );
+
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+
+    border: none;
+    border-radius: 14px;
+
+    padding: 10px 22px;
+}
+
+/* ✨ HOVER : lumière douce */
+QPushButton:hover {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #3A6EA5,
+        stop:0.5 #4A86C5,
+        stop:1 #2C5F7C
+    );
+}
+
+/* 🔘 CLICK (pressed) */
+QPushButton:pressed {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #1B3A57,
+        stop:1 #2C5F7C
+    );
+}
+
+/* 🚫 Désactivé */
+QPushButton:disabled {
+    background-color: #C8D3DF;
+    color: #6E7F91;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>♻️recyclage</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="dec">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>780</y>
+        <width>221</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>-1</pointsize>
+        <italic>false</italic>
+        <fontweight>DemiBold</fontweight>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #2C5F7C,
+        stop:0.5 #3A6EA5,
+        stop:1 #1B3A57
+    );
+
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+
+    border: none;
+    border-radius: 14px;
+
+    padding: 10px 22px;
+}
+
+/* ✨ HOVER : lumière douce */
+QPushButton:hover {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #3A6EA5,
+        stop:0.5 #4A86C5,
+        stop:1 #2C5F7C
+    );
+}
+
+/* 🔘 CLICK (pressed) */
+QPushButton:pressed {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #1B3A57,
+        stop:1 #2C5F7C
+    );
+}
+
+/* 🚫 Désactivé */
+QPushButton:disabled {
+    background-color: #C8D3DF;
+    color: #6E7F91;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>⚙️deconnextion</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_79">
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-10</y>
-        <width>1571</width>
-        <height>901</height>
+        <y>0</y>
+        <width>251</width>
+        <height>271</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: qlineargradient(
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="ressources.qrc">:/images/wasteflow.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="frame_2">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>0</y>
+      <width>1281</width>
+      <height>951</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: qlineargradient(
     spread:pad,
     x1:0, y1:0,
     x2:0, y2:1,
@@ -460,91 +569,46 @@ background: transparent;
     stop:0.5 #163A5F,
     stop:1 #274C77
 );</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Shape::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Shadow::Raised</enum>
-      </property>
-      <widget class="QFrame" name="frame_44">
-       <property name="geometry">
-        <rect>
-         <x>320</x>
-         <y>190</y>
-         <width>901</width>
-         <height>631</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background: white;
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
+    </property>
+    <widget class="QWidget" name="searchBox_5" native="true">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>1201</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background: white;
 border-radius: 20px;
 padding: 20px;
+
 </string>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
-       </property>
-       <widget class="QLabel" name="label_139">
-        <property name="geometry">
-         <rect>
-          <x>280</x>
-          <y>-10</y>
-          <width>381</width>
-          <height>121</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>26</pointsize>
-          <italic>true</italic>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: #2A3439;
-</string>
-        </property>
-        <property name="text">
-         <string>Récupération</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_140">
-        <property name="geometry">
-         <rect>
-          <x>320</x>
-          <y>80</y>
-          <width>311</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: #2A3439;
-</string>
-        </property>
-        <property name="text">
-         <string>Mot de passe oublié</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lineEdit_41">
-        <property name="geometry">
-         <rect>
-          <x>220</x>
-          <y>460</y>
-          <width>451</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLineEdit {
+     </property>
+     <widget class="QLineEdit" name="lineEdit_8">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>511</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>-1</pointsize>
+        <fontweight>Medium</fontweight>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
     background-color: #F9FBFD;          /* fond clair élégant */
     border: 2px solid #3A6EA5;           /* bleu marine clair */
     border-radius: 12px;
@@ -565,517 +629,577 @@ QLineEdit:hover {
     border: 2px solid #2F5D8A;
 }
 </string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_141">
-        <property name="geometry">
-         <rect>
-          <x>210</x>
-          <y>380</y>
-          <width>441</width>
-          <height>101</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>Leelawadee UI</family>
-          <pointsize>11</pointsize>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: #2A3439;
-</string>
-        </property>
-        <property name="text">
-         <string>Adresse email:</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_142">
-        <property name="geometry">
-         <rect>
-          <x>150</x>
-          <y>130</y>
-          <width>611</width>
-          <height>121</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>20</pointsize>
-          <italic>false</italic>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: #2A3439;
-</string>
-        </property>
-        <property name="text">
-         <string>📧Réinitialiser votre mot de passe</string>
-        </property>
-       </widget>
-       <widget class="QFrame" name="frame_45">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>230</y>
-          <width>871</width>
-          <height>151</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: qlineargradient(
-    spread:pad,
-    x1:0, y1:0,
-    x2:0, y2:1,
-    stop:0 #7FB3D5,
-    stop:1 #5DADE2
-);
-
-
-</string>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Shape::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Shadow::Raised</enum>
-        </property>
-        <widget class="QLabel" name="label_143">
-         <property name="geometry">
-          <rect>
-           <x>30</x>
-           <y>0</y>
-           <width>841</width>
-           <height>151</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>11</pointsize>
-           <italic>false</italic>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true"> color: #0A1F33;  </string>
-         </property>
-         <property name="text">
-          <string>ℹ️
-Information importante
-Un email contenant un lien de réinitialisation sera envoyé à l'adresse associée à votre compte. Le lien sera
-valide pendant 1 heure.</string>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QLabel" name="label_144">
-        <property name="geometry">
-         <rect>
-          <x>210</x>
-          <y>500</y>
-          <width>541</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>9</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: #2A3439;
-</string>
-        </property>
-        <property name="text">
-         <string>Entrez l'email ou l'identifiant associé à votre compte</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_8">
-        <property name="geometry">
-         <rect>
-          <x>270</x>
-          <y>560</y>
-          <width>371</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #1B3A2F,
-        stop:0.5 #276646,
-        stop:1 #1E4D36
-    );
-    color: white;
-    font-size: 14px;
-    font-weight: 700;      /* un peu plus bold pour valider */
-    text-transform: uppercase;  /* donne un effet bouton d’action */
-    border: none;
-    border-radius: 12px;
-    padding: 10px 22px;     /* garde la même taille */
-    cursor: pointer;        /* main au survol */
-    transition: all 0.2s ease-in-out; /* effet smooth hover */
-}
-
-/* ✨ Hover : lumière douce */
-QPushButton:hover {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #276646,
-        stop:0.5 #34885A,
-        stop:1 #1B3A2F
-    );
-    transform: scale(1.03);  /* effet léger au survol */
-}
-
-/* 🔘 Click (pressed) */
-QPushButton:pressed {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #1E4D36,
-        stop:1 #1B3A2F
-    );
-    transform: scale(0.98); /* effet click */
-}
-
-/* 🚫 Désactivé */
-QPushButton:disabled {
-    background-color: #A3B7A1;
-    color: #6E7F70;
-    cursor: default;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>envoyer </string>
-        </property>
-       </widget>
-       <zorder>label_144</zorder>
-       <zorder>label_141</zorder>
-       <zorder>label_139</zorder>
-       <zorder>label_140</zorder>
-       <zorder>lineEdit_41</zorder>
-       <zorder>label_142</zorder>
-       <zorder>frame_45</zorder>
-       <zorder>pushButton_8</zorder>
-      </widget>
-      <widget class="QLabel" name="label_145">
-       <property name="geometry">
-        <rect>
-         <x>710</x>
-         <y>60</y>
-         <width>111</width>
-         <height>111</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>48</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-radius: 20px;</string>
-       </property>
-       <property name="text">
-        <string>🔐</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_146">
-       <property name="geometry">
-        <rect>
-         <x>-560</x>
-         <y>-40</y>
-         <width>2141</width>
-         <height>1021</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="pixmap">
-        <pixmap resource="rs_employe.qrc">:/im2.jpg</pixmap>
-       </property>
-       <property name="scaledContents">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="retour_2">
-       <property name="geometry">
-        <rect>
-         <x>1340</x>
-         <y>780</y>
-         <width>141</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>-1</pointsize>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #1B3A2F,
-        stop:0.5 #276646,
-        stop:1 #1E4D36
-    );
-    color: white;
-    font-size: 14px;
-    font-weight: 700;      /* un peu plus bold pour valider */
-    text-transform: uppercase;  /* donne un effet bouton d’action */
-    border: none;
-    border-radius: 12px;
-    padding: 10px 22px;     /* garde la même taille */
-    cursor: pointer;        /* main au survol */
-    transition: all 0.2s ease-in-out; /* effet smooth hover */
-}
-
-/* ✨ Hover : lumière douce */
-QPushButton:hover {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #276646,
-        stop:0.5 #34885A,
-        stop:1 #1B3A2F
-    );
-    transform: scale(1.03);  /* effet léger au survol */
-}
-
-/* 🔘 Click (pressed) */
-QPushButton:pressed {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #1E4D36,
-        stop:1 #1B3A2F
-    );
-    transform: scale(0.98); /* effet click */
-}
-
-/* 🚫 Désactivé */
-QPushButton:disabled {
-    background-color: #A3B7A1;
-    color: #6E7F70;
-    cursor: default;
-}
-</string>
-       </property>
-       <property name="text">
-        <string>retour</string>
-       </property>
-      </widget>
-      <zorder>label_146</zorder>
-      <zorder>frame_44</zorder>
-      <zorder>label_145</zorder>
-      <zorder>retour_2</zorder>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="page_3">
-     <widget class="QFrame" name="frame_8">
-      <property name="enabled">
-       <bool>true</bool>
       </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_21">
       <property name="geometry">
        <rect>
-        <x>300</x>
-        <y>-10</y>
-        <width>1251</width>
-        <height>961</height>
+        <x>530</x>
+        <y>10</y>
+        <width>131</width>
+        <height>51</height>
        </rect>
       </property>
-      <property name="maximumSize">
-       <size>
-        <width>1500</width>
-        <height>1500</height>
-       </size>
+      <property name="font">
+       <font>
+        <pointsize>-1</pointsize>
+        <italic>false</italic>
+        <fontweight>DemiBold</fontweight>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #2C5F7C,
+        stop:0.5 #3A6EA5,
+        stop:1 #1B3A57
+    );
+
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+
+    border: none;
+    border-radius: 14px;
+
+    padding: 10px 22px;
+}
+
+/* ✨ HOVER : lumière douce */
+QPushButton:hover {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #3A6EA5,
+        stop:0.5 #4A86C5,
+        stop:1 #2C5F7C
+    );
+}
+
+/* 🔘 CLICK (pressed) */
+QPushButton:pressed {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #1B3A57,
+        stop:1 #2C5F7C
+    );
+}
+
+/* 🚫 Désactivé */
+QPushButton:disabled {
+    background-color: #C8D3DF;
+    color: #6E7F91;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>rechercher</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_20">
+      <property name="geometry">
+       <rect>
+        <x>920</x>
+        <y>10</y>
+        <width>131</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>-1</pointsize>
+        <italic>false</italic>
+        <fontweight>DemiBold</fontweight>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #2C5F7C,
+        stop:0.5 #3A6EA5,
+        stop:1 #1B3A57
+    );
+
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+
+    border: none;
+    border-radius: 14px;
+
+    padding: 10px 22px;
+}
+
+/* ✨ HOVER : lumière douce */
+QPushButton:hover {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #3A6EA5,
+        stop:0.5 #4A86C5,
+        stop:1 #2C5F7C
+    );
+}
+
+/* 🔘 CLICK (pressed) */
+QPushButton:pressed {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #1B3A57,
+        stop:1 #2C5F7C
+    );
+}
+
+/* 🚫 Désactivé */
+QPushButton:disabled {
+    background-color: #C8D3DF;
+    color: #6E7F91;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>📑exporter</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_19">
+      <property name="geometry">
+       <rect>
+        <x>1060</x>
+        <y>10</y>
+        <width>131</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>-1</pointsize>
+        <italic>false</italic>
+        <fontweight>DemiBold</fontweight>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #2C5F7C,
+        stop:0.5 #3A6EA5,
+        stop:1 #1B3A57
+    );
+
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+
+    border: none;
+    border-radius: 14px;
+
+    padding: 10px 22px;
+}
+
+/* ✨ HOVER : lumière douce */
+QPushButton:hover {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #3A6EA5,
+        stop:0.5 #4A86C5,
+        stop:1 #2C5F7C
+    );
+}
+
+/* 🔘 CLICK (pressed) */
+QPushButton:pressed {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #1B3A57,
+        stop:1 #2C5F7C
+    );
+}
+
+/* 🚫 Désactivé */
+QPushButton:disabled {
+    background-color: #C8D3DF;
+    color: #6E7F91;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>statistique</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QFrame" name="frame_48">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>100</y>
+       <width>1201</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QFrame {
+    background-color: white;
+    border-radius: 15px;
+}
+
+</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Shape::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Shadow::Raised</enum>
+     </property>
+     <widget class="QLabel" name="label_18">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>261</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: #2A3439;
+</string>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:700;&quot;&gt;👥 Liste des clients&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_client_ajouter">
+      <property name="geometry">
+       <rect>
+        <x>570</x>
+        <y>10</y>
+        <width>131</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>-1</pointsize>
+        <italic>false</italic>
+        <fontweight>DemiBold</fontweight>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #276646,
+        stop:0.5 #34885A,
+        stop:1 #1B3A2F
+    );
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 14px;
+    padding: 10px 22px;
+}
+QPushButton:hover {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #34885A,
+        stop:0.5 #42A56F,
+        stop:1 #276646
+    );
+}
+QPushButton:pressed {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #1B3A2F,
+        stop:1 #276646
+    );
+}
+</string>
+      </property>
+      <property name="text">
+       <string>➕ Ajouter</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_23">
+      <property name="geometry">
+       <rect>
+        <x>710</x>
+        <y>10</y>
+        <width>131</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>-1</pointsize>
+        <italic>false</italic>
+        <fontweight>DemiBold</fontweight>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #2C5F7C,
+        stop:0.5 #3A6EA5,
+        stop:1 #1B3A57
+    );
+
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+
+    border: none;
+    border-radius: 14px;
+
+    padding: 10px 22px;
+}
+
+/* ✨ HOVER : lumière douce */
+QPushButton:hover {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #3A6EA5,
+        stop:0.5 #4A86C5,
+        stop:1 #2C5F7C
+    );
+}
+
+/* 🔘 CLICK (pressed) */
+QPushButton:pressed {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #1B3A57,
+        stop:1 #2C5F7C
+    );
+}
+
+/* 🚫 Désactivé */
+QPushButton:disabled {
+    background-color: #C8D3DF;
+    color: #6E7F91;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>✏️ Modifier</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_10">
+      <property name="geometry">
+       <rect>
+        <x>850</x>
+        <y>10</y>
+        <width>131</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>-1</pointsize>
+        <italic>false</italic>
+        <fontweight>DemiBold</fontweight>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #8B0000,
+        stop:0.5 #A52A2A,
+        stop:1 #5C0000
+    );
+
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+
+    border: none;
+    border-radius: 14px;
+
+    padding: 10px 22px;
+}
+
+/* ✨ HOVER : lumière douce */
+QPushButton:hover {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #A52A2A,
+        stop:0.5 #CD5C5C,
+        stop:1 #8B0000
+    );
+}
+
+/* 🔘 CLICK (pressed) */
+QPushButton:pressed {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #5C0000,
+        stop:1 #8B0000
+    );
+}
+
+/* 🚫 Désactivé */
+QPushButton:disabled {
+    background-color: #C8D3DF;
+    color: #6E7F91;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>🗑️ Supprimer</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboTypePropriete_3">
+      <property name="geometry">
+       <rect>
+        <x>1000</x>
+        <y>10</y>
+        <width>191</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">  background-color: #F9FBFD;          /* fond clair élégant */
+    border: 2px solid #3A6EA5;           /* bleu marine clair */
+    border-radius: 12px;
+    padding: 10px 14px;
+    color: #0A1F33;                      /* texte bleu marine foncé */
+    font-size: 14px;
+    font-weight: 500;</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>📊 Trier par...</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>ID</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Nom</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Type</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Zone</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Statut</string>
+       </property>
+      </item>
+     </widget>
+    </widget>
+    <widget class="QTableWidget" name="tableWidget_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>180</y>
+       <width>1201</width>
+       <height>761</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <column>
+      <property name="text">
+       <string>ID</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>NOM</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>PRENOM</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>TYPE</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>ZONE</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>TELEPHONE</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>STATUT</string>
+      </property>
+     </column>
+    </widget>
+    <widget class="QFrame" name="frame_46">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>100</y>
+       <width>521</width>
+       <height>761</height>
+      </rect>
+     </property>
+     <property name="visible">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background: white;
+border-radius: 20px;
+padding: 20px;
+</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Shape::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Shadow::Raised</enum>
+     </property>
+     <widget class="QFrame" name="frame_47">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>521</width>
+        <height>71</height>
+       </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: qlineargradient(
-    spread:pad,
-    x1:0, y1:0,
-    x2:0, y2:1,
-    stop:0 #0A1F33,
-    stop:0.5 #163A5F,
-    stop:1 #274C77
-);
-
-</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Shape::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Shadow::Raised</enum>
-      </property>
-      <widget class="QTableWidget" name="tableWidget_4">
-       <property name="geometry">
-        <rect>
-         <x>560</x>
-         <y>200</y>
-         <width>661</width>
-         <height>681</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <row>
-        <property name="text">
-         <string>2</string>
-        </property>
-       </row>
-       <row/>
-       <row/>
-       <row/>
-       <row/>
-       <row/>
-       <row/>
-       <row/>
-       <row/>
-       <row/>
-       <column>
-        <property name="text">
-         <string>nom</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>prenom</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>email</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>tel</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>date de naissance</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>cin</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>adresse </string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>poste</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>service</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>mail</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>salaire</string>
-        </property>
-       </column>
-      </widget>
-      <widget class="QFrame" name="frame_23">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>120</y>
-         <width>521</width>
-         <height>761</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background: white;
-border-radius: 20px;
-padding: 20px;
-</string>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
-       </property>
-       <widget class="QLineEdit" name="lineEdit_18">
-        <property name="geometry">
-         <rect>
-          <x>170</x>
-          <y>90</y>
-          <width>331</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLineEdit {
-    background-color: #F9FBFD;          /* fond clair élégant */
-    border: 2px solid #3A6EA5;           /* bleu marine clair */
-    border-radius: 12px;
-    padding: 10px 14px;
-    color: #0A1F33;                      /* texte bleu marine foncé */
-    font-size: 14px;
-    font-weight: 500;
-}
-
-/* Quand le champ est sélectionné */
-QLineEdit:focus {
-    background-color: white;
-    border: 2px solid #1E3A5F;           /* focus plus foncé */
-}
-
-/* Hover */
-QLineEdit:hover {
-    border: 2px solid #2F5D8A;
-}
-</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QFrame" name="frame_46">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>521</width>
-          <height>71</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: qlineargradient(
     spread:pad,
     x1:0, y1:0,
     x2:0, y2:1,
@@ -1084,1567 +1208,535 @@ QLineEdit:hover {
 );
 
 </string>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Shape::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Shadow::Raised</enum>
-        </property>
-        <widget class="QLabel" name="label_71">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>521</width>
-           <height>71</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>16</pointsize>
-           <italic>false</italic>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color: qlineargradient(
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Raised</enum>
+      </property>
+      <widget class="QLabel" name="label_168">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>521</width>
+         <height>71</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>16</pointsize>
+         <italic>false</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: qlineargradient(
         x1:0, y1:0,
         x2:0, y2:1,
         stop:0 #276646,
         stop:0.5 #34885A,
         stop:1 #1B3A2F
     );</string>
-         </property>
-         <property name="text">
-          <string>👤 Informations Personnelles</string>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QLabel" name="label_78">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>80</y>
-          <width>71</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>👤</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lineEdit_19">
-        <property name="geometry">
-         <rect>
-          <x>170</x>
-          <y>140</y>
-          <width>331</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLineEdit {
-    background-color: #F9FBFD;          /* fond clair élégant */
-    border: 2px solid #3A6EA5;           /* bleu marine clair */
-    border-radius: 12px;
-    padding: 10px 14px;
-    color: #0A1F33;                      /* texte bleu marine foncé */
-    font-size: 14px;
-    font-weight: 500;
-}
-
-/* Quand le champ est sélectionné */
-QLineEdit:focus {
-    background-color: white;
-    border: 2px solid #1E3A5F;           /* focus plus foncé */
-}
-
-/* Hover */
-QLineEdit:hover {
-    border: 2px solid #2F5D8A;
-}
-</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_80">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>130</y>
-          <width>71</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>👤</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_147">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>80</y>
-          <width>101</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-          <italic>true</italic>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"> color: #0A1F33;  </string>
-        </property>
-        <property name="text">
-         <string>Nom:</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_148">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>130</y>
-          <width>121</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-          <italic>true</italic>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"> color: #0A1F33;  </string>
-        </property>
-        <property name="text">
-         <string>Prenom:</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lineEdit_20">
-        <property name="geometry">
-         <rect>
-          <x>170</x>
-          <y>250</y>
-          <width>331</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLineEdit {
-    background-color: #F9FBFD;          /* fond clair élégant */
-    border: 2px solid #3A6EA5;           /* bleu marine clair */
-    border-radius: 12px;
-    padding: 10px 14px;
-    color: #0A1F33;                      /* texte bleu marine foncé */
-    font-size: 14px;
-    font-weight: 500;
-}
-
-/* Quand le champ est sélectionné */
-QLineEdit:focus {
-    background-color: white;
-    border: 2px solid #1E3A5F;           /* focus plus foncé */
-}
-
-/* Hover */
-QLineEdit:hover {
-    border: 2px solid #2F5D8A;
-}
-</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_149">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>190</y>
-          <width>121</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-          <italic>true</italic>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"> color: #0A1F33;  </string>
-        </property>
-        <property name="text">
-         <string>Email:</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_150">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>190</y>
-          <width>71</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>📧</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_151">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>240</y>
-          <width>141</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-          <italic>true</italic>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"> color: #0A1F33;  </string>
-        </property>
-        <property name="text">
-         <string>Téléphone:</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_152">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>230</y>
-          <width>71</width>
-          <height>71</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>📱</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_153">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>290</y>
-          <width>231</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-          <italic>true</italic>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"> color: #0A1F33;  </string>
-        </property>
-        <property name="text">
-         <string>Date de Naissance:</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_154">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>280</y>
-          <width>71</width>
-          <height>71</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>📅</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lineEdit_22">
-        <property name="geometry">
-         <rect>
-          <x>70</x>
-          <y>350</y>
-          <width>151</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLineEdit {
-    background-color: #F9FBFD;          /* fond clair élégant */
-    border: 2px solid #3A6EA5;           /* bleu marine clair */
-    border-radius: 12px;
-    padding: 10px 14px;
-    color: #0A1F33;                      /* texte bleu marine foncé */
-    font-size: 14px;
-    font-weight: 500;
-}
-
-/* Quand le champ est sélectionné */
-QLineEdit:focus {
-    background-color: white;
-    border: 2px solid #1E3A5F;           /* focus plus foncé */
-}
-
-/* Hover */
-QLineEdit:hover {
-    border: 2px solid #2F5D8A;
-}
-</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_155">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>340</y>
-          <width>111</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-          <italic>true</italic>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"> color: #0A1F33;  </string>
-        </property>
-        <property name="text">
-         <string>CIN:</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_156">
-        <property name="geometry">
-         <rect>
-          <x>210</x>
-          <y>330</y>
-          <width>71</width>
-          <height>71</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>🆔</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_157">
-        <property name="geometry">
-         <rect>
-          <x>40</x>
-          <y>400</y>
-          <width>231</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-          <italic>true</italic>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"> color: #0A1F33;  </string>
-        </property>
-        <property name="text">
-         <string>Adresse Complète:</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_158">
-        <property name="geometry">
-         <rect>
-          <x>-10</x>
-          <y>390</y>
-          <width>71</width>
-          <height>71</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>📍</string>
-        </property>
-       </widget>
-       <widget class="QDateEdit" name="dateEdit_6">
-        <property name="geometry">
-         <rect>
-          <x>260</x>
-          <y>300</y>
-          <width>241</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: #F9FBFD;          /* fond clair élégant */
-    border: 2px solid #3A6EA5;           /* bleu marine clair */
-    border-radius: 12px;
-    padding: 10px 14px;
-    color: #0A1F33;                      /* texte bleu marine foncé */
-    font-size: 14px;
-    font-weight: 500;</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lineEdit_42">
-        <property name="geometry">
-         <rect>
-          <x>170</x>
-          <y>190</y>
-          <width>331</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLineEdit {
-    background-color: #F9FBFD;          /* fond clair élégant */
-    border: 2px solid #3A6EA5;           /* bleu marine clair */
-    border-radius: 12px;
-    padding: 10px 14px;
-    color: #0A1F33;                      /* texte bleu marine foncé */
-    font-size: 14px;
-    font-weight: 500;
-}
-
-/* Quand le champ est sélectionné */
-QLineEdit:focus {
-    background-color: white;
-    border: 2px solid #1E3A5F;           /* focus plus foncé */
-}
-
-/* Hover */
-QLineEdit:hover {
-    border: 2px solid #2F5D8A;
-}
-</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lineEdit_21">
-        <property name="geometry">
-         <rect>
-          <x>280</x>
-          <y>350</y>
-          <width>221</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLineEdit {
-    background-color: #F9FBFD;          /* fond clair élégant */
-    border: 2px solid #3A6EA5;           /* bleu marine clair */
-    border-radius: 12px;
-    padding: 10px 14px;
-    color: #0A1F33;                      /* texte bleu marine foncé */
-    font-size: 14px;
-    font-weight: 500;
-}
-
-/* Quand le champ est sélectionné */
-QLineEdit:focus {
-    background-color: white;
-    border: 2px solid #1E3A5F;           /* focus plus foncé */
-}
-
-/* Hover */
-QLineEdit:hover {
-    border: 2px solid #2F5D8A;
-}
-</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lineEdit_43">
-        <property name="geometry">
-         <rect>
-          <x>230</x>
-          <y>410</y>
-          <width>271</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLineEdit {
-    background-color: #F9FBFD;          /* fond clair élégant */
-    border: 2px solid #3A6EA5;           /* bleu marine clair */
-    border-radius: 12px;
-    padding: 10px 14px;
-    color: #0A1F33;                      /* texte bleu marine foncé */
-    font-size: 14px;
-    font-weight: 500;
-}
-
-/* Quand le champ est sélectionné */
-QLineEdit:focus {
-    background-color: white;
-    border: 2px solid #1E3A5F;           /* focus plus foncé */
-}
-
-/* Hover */
-QLineEdit:hover {
-    border: 2px solid #2F5D8A;
-}
-</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_159">
-        <property name="geometry">
-         <rect>
-          <x>40</x>
-          <y>510</y>
-          <width>121</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-          <italic>true</italic>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"> color: #0A1F33;  </string>
-        </property>
-        <property name="text">
-         <string>Service:</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_160">
-        <property name="geometry">
-         <rect>
-          <x>40</x>
-          <y>450</y>
-          <width>121</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-          <italic>true</italic>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"> color: #0A1F33;  </string>
-        </property>
-        <property name="text">
-         <string>Poste:</string>
-        </property>
-       </widget>
-       <widget class="QDateEdit" name="dateEdit_16">
-        <property name="geometry">
-         <rect>
-          <x>270</x>
-          <y>570</y>
-          <width>231</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: #F9FBFD;          /* fond clair élégant */
-    border: 2px solid #3A6EA5;           /* bleu marine clair */
-    border-radius: 12px;
-    padding: 10px 14px;
-    color: #0A1F33;                      /* texte bleu marine foncé */
-    font-size: 14px;
-    font-weight: 500;</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_161">
-        <property name="geometry">
-         <rect>
-          <x>40</x>
-          <y>620</y>
-          <width>251</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-          <italic>true</italic>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"> color: #0A1F33;  </string>
-        </property>
-        <property name="text">
-         <string>Salaire Mensuel (TND):</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_162">
-        <property name="geometry">
-         <rect>
-          <x>40</x>
-          <y>570</y>
-          <width>201</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-          <italic>true</italic>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"> color: #0A1F33;  </string>
-        </property>
-        <property name="text">
-         <string>Date d'Embauche:</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lineEdit_44">
-        <property name="geometry">
-         <rect>
-          <x>170</x>
-          <y>460</y>
-          <width>331</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLineEdit {
-    background-color: #F9FBFD;          /* fond clair élégant */
-    border: 2px solid #3A6EA5;           /* bleu marine clair */
-    border-radius: 12px;
-    padding: 10px 14px;
-    color: #0A1F33;                      /* texte bleu marine foncé */
-    font-size: 14px;
-    font-weight: 500;
-}
-
-/* Quand le champ est sélectionné */
-QLineEdit:focus {
-    background-color: white;
-    border: 2px solid #1E3A5F;           /* focus plus foncé */
-}
-
-/* Hover */
-QLineEdit:hover {
-    border: 2px solid #2F5D8A;
-}
-</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lineEdit_45">
-        <property name="geometry">
-         <rect>
-          <x>170</x>
-          <y>520</y>
-          <width>331</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLineEdit {
-    background-color: #F9FBFD;          /* fond clair élégant */
-    border: 2px solid #3A6EA5;           /* bleu marine clair */
-    border-radius: 12px;
-    padding: 10px 14px;
-    color: #0A1F33;                      /* texte bleu marine foncé */
-    font-size: 14px;
-    font-weight: 500;
-}
-
-/* Quand le champ est sélectionné */
-QLineEdit:focus {
-    background-color: white;
-    border: 2px solid #1E3A5F;           /* focus plus foncé */
-}
-
-/* Hover */
-QLineEdit:hover {
-    border: 2px solid #2F5D8A;
-}
-</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lineEdit_46">
-        <property name="geometry">
-         <rect>
-          <x>270</x>
-          <y>620</y>
-          <width>231</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLineEdit {
-    background-color: #F9FBFD;          /* fond clair élégant */
-    border: 2px solid #3A6EA5;           /* bleu marine clair */
-    border-radius: 12px;
-    padding: 10px 14px;
-    color: #0A1F33;                      /* texte bleu marine foncé */
-    font-size: 14px;
-    font-weight: 500;
-}
-
-/* Quand le champ est sélectionné */
-QLineEdit:focus {
-    background-color: white;
-    border: 2px solid #1E3A5F;           /* focus plus foncé */
-}
-
-/* Hover */
-QLineEdit:hover {
-    border: 2px solid #2F5D8A;
-}
-</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_164">
-        <property name="geometry">
-         <rect>
-          <x>-10</x>
-          <y>610</y>
-          <width>71</width>
-          <height>81</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>💰</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_165">
-        <property name="geometry">
-         <rect>
-          <x>-10</x>
-          <y>560</y>
-          <width>71</width>
-          <height>71</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>📅</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_166">
-        <property name="geometry">
-         <rect>
-          <x>-10</x>
-          <y>500</y>
-          <width>71</width>
-          <height>71</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>🧑🏻‍💻</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_167">
-        <property name="geometry">
-         <rect>
-          <x>-10</x>
-          <y>440</y>
-          <width>71</width>
-          <height>71</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>🧑🏻‍💻</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_17">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>700</y>
-          <width>471</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-          <italic>false</italic>
-          <fontweight>DemiBold</fontweight>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #2C5F7C,
-        stop:0.5 #3A6EA5,
-        stop:1 #1B3A57
-    );
-
-    color: white;
-    font-size: 14px;
-    font-weight: 600;
-
-    border: none;
-    border-radius: 14px;
-
-    padding: 10px 22px;
-}
-
-/* ✨ HOVER : lumière douce */
-QPushButton:hover {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #3A6EA5,
-        stop:0.5 #4A86C5,
-        stop:1 #2C5F7C
-    );
-}
-
-/* 🔘 CLICK (pressed) */
-QPushButton:pressed {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #1B3A57,
-        stop:1 #2C5F7C
-    );
-}
-
-/* 🚫 Désactivé */
-QPushButton:disabled {
-    background-color: #C8D3DF;
-    color: #6E7F91;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>ajouter</string>
-        </property>
-       </widget>
-       <zorder>label_153</zorder>
-       <zorder>frame_46</zorder>
-       <zorder>label_152</zorder>
-       <zorder>label_154</zorder>
-       <zorder>label_155</zorder>
-       <zorder>label_156</zorder>
-       <zorder>label_157</zorder>
-       <zorder>label_158</zorder>
-       <zorder>label_161</zorder>
-       <zorder>lineEdit_46</zorder>
-       <zorder>label_160</zorder>
-       <zorder>label_150</zorder>
-       <zorder>label_151</zorder>
-       <zorder>label_149</zorder>
-       <zorder>label_148</zorder>
-       <zorder>lineEdit_18</zorder>
-       <zorder>label_78</zorder>
-       <zorder>lineEdit_19</zorder>
-       <zorder>label_80</zorder>
-       <zorder>lineEdit_20</zorder>
-       <zorder>label_147</zorder>
-       <zorder>lineEdit_22</zorder>
-       <zorder>dateEdit_6</zorder>
-       <zorder>lineEdit_42</zorder>
-       <zorder>lineEdit_21</zorder>
-       <zorder>label_159</zorder>
-       <zorder>dateEdit_16</zorder>
-       <zorder>label_162</zorder>
-       <zorder>lineEdit_43</zorder>
-       <zorder>lineEdit_44</zorder>
-       <zorder>lineEdit_45</zorder>
-       <zorder>label_164</zorder>
-       <zorder>label_165</zorder>
-       <zorder>label_166</zorder>
-       <zorder>label_167</zorder>
-       <zorder>pushButton_17</zorder>
-      </widget>
-      <widget class="QFrame" name="frame_21">
-       <property name="geometry">
-        <rect>
-         <x>560</x>
-         <y>120</y>
-         <width>661</width>
-         <height>71</height>
-        </rect>
        </property>
-       <property name="styleSheet">
-        <string notr="true">QFrame {
-    background-color: white;
-    border-radius: 15px;
-}
-
-</string>
+       <property name="text">
+        <string>👤 Informations Personnelles</string>
        </property>
-       <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
        </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
-       </property>
-       <widget class="QLabel" name="label_16">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>261</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: #2A3439;
-</string>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:700;&quot;&gt;Liste des employés:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_18">
-        <property name="geometry">
-         <rect>
-          <x>290</x>
-          <y>10</y>
-          <width>111</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-          <italic>false</italic>
-          <fontweight>DemiBold</fontweight>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #2C5F7C,
-        stop:0.5 #3A6EA5,
-        stop:1 #1B3A57
-    );
-
-    color: white;
-    font-size: 14px;
-    font-weight: 600;
-
-    border: none;
-    border-radius: 14px;
-
-    padding: 10px 22px;
-}
-
-/* ✨ HOVER : lumière douce */
-QPushButton:hover {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #3A6EA5,
-        stop:0.5 #4A86C5,
-        stop:1 #2C5F7C
-    );
-}
-
-/* 🔘 CLICK (pressed) */
-QPushButton:pressed {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #1B3A57,
-        stop:1 #2C5F7C
-    );
-}
-
-/* 🚫 Désactivé */
-QPushButton:disabled {
-    background-color: #C8D3DF;
-    color: #6E7F91;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>modifier</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_6">
-        <property name="geometry">
-         <rect>
-          <x>410</x>
-          <y>10</y>
-          <width>111</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-          <italic>false</italic>
-          <fontweight>DemiBold</fontweight>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #2C5F7C,
-        stop:0.5 #3A6EA5,
-        stop:1 #1B3A57
-    );
-
-    color: white;
-    font-size: 14px;
-    font-weight: 600;
-
-    border: none;
-    border-radius: 14px;
-
-    padding: 10px 22px;
-}
-
-/* ✨ HOVER : lumière douce */
-QPushButton:hover {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #3A6EA5,
-        stop:0.5 #4A86C5,
-        stop:1 #2C5F7C
-    );
-}
-
-/* 🔘 CLICK (pressed) */
-QPushButton:pressed {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #1B3A57,
-        stop:1 #2C5F7C
-    );
-}
-
-/* 🚫 Désactivé */
-QPushButton:disabled {
-    background-color: #C8D3DF;
-    color: #6E7F91;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>Supprimer</string>
-        </property>
-       </widget>
-       <widget class="QComboBox" name="comboTypePropriete_8">
-        <property name="geometry">
-         <rect>
-          <x>530</x>
-          <y>10</y>
-          <width>121</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">  background-color: #F9FBFD;          /* fond clair élégant */
-    border: 2px solid #3A6EA5;           /* bleu marine clair */
-    border-radius: 12px;
-    padding: 10px 14px;
-    color: #0A1F33;                      /* texte bleu marine foncé */
-    font-size: 14px;
-    font-weight: 500;</string>
-        </property>
-        <item>
-         <property name="text">
-          <string>trier selon</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>service</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>nom(A..Z)</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>poste</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>anciennete</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>id</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string/>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string/>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string/>
-         </property>
-        </item>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="searchBox_11" native="true">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>40</y>
-         <width>1201</width>
-         <height>71</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background: white;
-border-radius: 20px;
-padding: 20px;
-
-</string>
-       </property>
-       <widget class="QLabel" name="label_44">
-        <property name="geometry">
-         <rect>
-          <x>70</x>
-          <y>60</y>
-          <width>131</width>
-          <height>91</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>28</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background: white;
-border-radius: 20px;
-padding: 20px;</string>
-        </property>
-        <property name="text">
-         <string>👥</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_45">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>81</width>
-          <height>71</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background: white;
-border-radius: 20px;
-padding: 20px;</string>
-        </property>
-        <property name="text">
-         <string>🔍</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lineEdit_10">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>10</y>
-          <width>471</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-          <fontweight>Medium</fontweight>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLineEdit {
-    background-color: #F9FBFD;          /* fond clair élégant */
-    border: 2px solid #3A6EA5;           /* bleu marine clair */
-    border-radius: 12px;
-    padding: 10px 14px;
-    color: #0A1F33;                      /* texte bleu marine foncé */
-    font-size: 14px;
-    font-weight: 500;
-}
-
-/* Quand le champ est sélectionné */
-QLineEdit:focus {
-    background-color: white;
-    border: 2px solid #1E3A5F;           /* focus plus foncé */
-}
-
-/* Hover */
-QLineEdit:hover {
-    border: 2px solid #2F5D8A;
-}
-</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_43">
-        <property name="geometry">
-         <rect>
-          <x>1030</x>
-          <y>10</y>
-          <width>131</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-          <italic>false</italic>
-          <fontweight>DemiBold</fontweight>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #2C5F7C,
-        stop:0.5 #3A6EA5,
-        stop:1 #1B3A57
-    );
-
-    color: white;
-    font-size: 14px;
-    font-weight: 600;
-
-    border: none;
-    border-radius: 14px;
-
-    padding: 10px 22px;
-}
-
-/* ✨ HOVER : lumière douce */
-QPushButton:hover {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #3A6EA5,
-        stop:0.5 #4A86C5,
-        stop:1 #2C5F7C
-    );
-}
-
-/* 🔘 CLICK (pressed) */
-QPushButton:pressed {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #1B3A57,
-        stop:1 #2C5F7C
-    );
-}
-
-/* 🚫 Désactivé */
-QPushButton:disabled {
-    background-color: #C8D3DF;
-    color: #6E7F91;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>statistique</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_44">
-        <property name="geometry">
-         <rect>
-          <x>840</x>
-          <y>10</y>
-          <width>131</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-          <italic>false</italic>
-          <fontweight>DemiBold</fontweight>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #2C5F7C,
-        stop:0.5 #3A6EA5,
-        stop:1 #1B3A57
-    );
-
-    color: white;
-    font-size: 14px;
-    font-weight: 600;
-
-    border: none;
-    border-radius: 14px;
-
-    padding: 10px 22px;
-}
-
-/* ✨ HOVER : lumière douce */
-QPushButton:hover {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #3A6EA5,
-        stop:0.5 #4A86C5,
-        stop:1 #2C5F7C
-    );
-}
-
-/* 🔘 CLICK (pressed) */
-QPushButton:pressed {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #1B3A57,
-        stop:1 #2C5F7C
-    );
-}
-
-/* 🚫 Désactivé */
-QPushButton:disabled {
-    background-color: #C8D3DF;
-    color: #6E7F91;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>📑exporter</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_46">
-        <property name="geometry">
-         <rect>
-          <x>650</x>
-          <y>10</y>
-          <width>131</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-          <italic>false</italic>
-          <fontweight>DemiBold</fontweight>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #2C5F7C,
-        stop:0.5 #3A6EA5,
-        stop:1 #1B3A57
-    );
-
-    color: white;
-    font-size: 14px;
-    font-weight: 600;
-
-    border: none;
-    border-radius: 14px;
-
-    padding: 10px 22px;
-}
-
-/* ✨ HOVER : lumière douce */
-QPushButton:hover {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #3A6EA5,
-        stop:0.5 #4A86C5,
-        stop:1 #2C5F7C
-    );
-}
-
-/* 🔘 CLICK (pressed) */
-QPushButton:pressed {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #1B3A57,
-        stop:1 #2C5F7C
-    );
-}
-
-/* 🚫 Désactivé */
-QPushButton:disabled {
-    background-color: #C8D3DF;
-    color: #6E7F91;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>rechercher</string>
-        </property>
-       </widget>
       </widget>
      </widget>
-     <widget class="QWidget" name="searchBox_7" native="true">
+     <widget class="QLabel" name="label_171">
       <property name="geometry">
        <rect>
-        <x>0</x>
-        <y>10</y>
-        <width>311</width>
-        <height>951</height>
+        <x>20</x>
+        <y>90</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <italic>true</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"> color: #0A1F33;  </string>
+      </property>
+      <property name="text">
+       <string>👤 Nom:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_46">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>90</y>
+        <width>361</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: qlineargradient(
-    spread:pad,
-    x1:0, y1:0,
-    x2:0, y2:1,
-    stop:0 #0A1F33,
-    stop:0.5 #163A5F,
-    stop:1 #274C77
-);
+       <string notr="true">QLineEdit {
+    background-color: #F9FBFD;          /* fond clair élégant */
+    border: 2px solid #3A6EA5;           /* bleu marine clair */
+    border-radius: 12px;
+    padding: 10px 14px;
+    color: #0A1F33;                      /* texte bleu marine foncé */
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Quand le champ est sélectionné */
+QLineEdit:focus {
+    background-color: white;
+    border: 2px solid #1E3A5F;           /* focus plus foncé */
+}
+
+/* Hover */
+QLineEdit:hover {
+    border: 2px solid #2F5D8A;
+}
 </string>
       </property>
-      <widget class="QFrame" name="frame_20">
-       <property name="geometry">
-        <rect>
-         <x>40</x>
-         <y>20</y>
-         <width>251</width>
-         <height>841</height>
-        </rect>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_172">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>140</y>
+        <width>121</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <italic>true</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"> color: #0A1F33;  </string>
+      </property>
+      <property name="text">
+       <string>👤 Prénom:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_47">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>140</y>
+        <width>361</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+    background-color: #F9FBFD;          /* fond clair élégant */
+    border: 2px solid #3A6EA5;           /* bleu marine clair */
+    border-radius: 12px;
+    padding: 10px 14px;
+    color: #0A1F33;                      /* texte bleu marine foncé */
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Quand le champ est sélectionné */
+QLineEdit:focus {
+    background-color: white;
+    border: 2px solid #1E3A5F;           /* focus plus foncé */
+}
+
+/* Hover */
+QLineEdit:hover {
+    border: 2px solid #2F5D8A;
+}
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_175">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>190</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <italic>true</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"> color: #0A1F33;  </string>
+      </property>
+      <property name="text">
+       <string>📞 Téléphone:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_48">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>190</y>
+        <width>361</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+    background-color: #F9FBFD;          /* fond clair élégant */
+    border: 2px solid #3A6EA5;           /* bleu marine clair */
+    border-radius: 12px;
+    padding: 10px 14px;
+    color: #0A1F33;                      /* texte bleu marine foncé */
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Quand le champ est sélectionné */
+QLineEdit:focus {
+    background-color: white;
+    border: 2px solid #1E3A5F;           /* focus plus foncé */
+}
+
+/* Hover */
+QLineEdit:hover {
+    border: 2px solid #2F5D8A;
+}
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_177">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>240</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <italic>true</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"> color: #0A1F33;  </string>
+      </property>
+      <property name="text">
+       <string>🏠 Adresse :</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_49">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>240</y>
+        <width>361</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+    background-color: #F9FBFD;          /* fond clair élégant */
+    border: 2px solid #3A6EA5;           /* bleu marine clair */
+    border-radius: 12px;
+    padding: 10px 14px;
+    color: #0A1F33;                      /* texte bleu marine foncé */
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Quand le champ est sélectionné */
+QLineEdit:focus {
+    background-color: white;
+    border: 2px solid #1E3A5F;           /* focus plus foncé */
+}
+
+/* Hover */
+QLineEdit:hover {
+    border: 2px solid #2F5D8A;
+}
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_179">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>290</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <italic>true</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"> color: #0A1F33;  </string>
+      </property>
+      <property name="text">
+       <string>🆔 CIN:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_50">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>290</y>
+        <width>361</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+    background-color: #F9FBFD;          /* fond clair élégant */
+    border: 2px solid #3A6EA5;           /* bleu marine clair */
+    border-radius: 12px;
+    padding: 10px 14px;
+    color: #0A1F33;                      /* texte bleu marine foncé */
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Quand le champ est sélectionné */
+QLineEdit:focus {
+    background-color: white;
+    border: 2px solid #1E3A5F;           /* focus plus foncé */
+}
+
+/* Hover */
+QLineEdit:hover {
+    border: 2px solid #2F5D8A;
+}
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_180">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>340</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <italic>true</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"> color: #0A1F33;  </string>
+      </property>
+      <property name="text">
+       <string>📍 Zone :</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBox_3">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>340</y>
+        <width>361</width>
+        <height>48</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QComboBox {
+    background-color: #1F3B5C;
+    color: #EAF3FF;
+    border: 1px solid #3F6FA5;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 13px;
+    font-family: &quot;Segoe UI&quot;;
+    min-height: 34px;
+}
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 28px;
+    border-left: 1px solid #3F6FA5;
+}
+
+QComboBox::down-arrow {
+    image: none;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #EAF3FF;
+}
+QComboBox QAbstractItemView {
+    background-color: #203A57;
+    color: #EAF3FF;
+    selection-background-color: #2F5F99;
+    selection-color: #FFFFFF;
+    outline: 0;
+    border-radius: 6px;
+}
+</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Tunis Centre</string>
        </property>
-       <property name="styleSheet">
-        <string notr="true">  background-color: #FFFFFF; /* fond blanc */
-    border-radius: 20px;       /* coins arrondis */
-    border: 2px solid rgba(44, 95, 124, 0.08); /* bord gris clair */</string>
+      </item>
+      <item>
+       <property name="text">
+        <string>Ariana</string>
        </property>
-       <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
+      </item>
+      <item>
+       <property name="text">
+        <string>Manouba</string>
        </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
+      </item>
+     </widget>
+     <widget class="QLabel" name="label_181">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>390</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <italic>true</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"> color: #0A1F33;  </string>
+      </property>
+      <property name="text">
+       <string>🏢 Type :</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBox_2">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>390</y>
+        <width>361</width>
+        <height>48</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QComboBox {
+    background-color: #1F3B5C;
+    color: #EAF3FF;
+    border: 1px solid #3F6FA5;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 13px;
+    font-family: &quot;Segoe UI&quot;;
+    min-height: 34px;
+}
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 28px;
+    border-left: 1px solid #3F6FA5;
+}
+
+QComboBox::down-arrow {
+    image: none;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #EAF3FF;
+}
+QComboBox QAbstractItemView {
+    background-color: #203A57;
+    color: #EAF3FF;
+    selection-background-color: #2F5F99;
+    selection-color: #FFFFFF;
+    outline: 0;
+    border-radius: 6px;
+}
+</string>
+      </property>
+      <property name="currentText">
+       <string>Résidentiel</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Résidentiel</string>
        </property>
-       <widget class="QPushButton" name="pushButton_35">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>510</y>
-          <width>221</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-          <italic>false</italic>
-          <fontweight>DemiBold</fontweight>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
+      </item>
+      <item>
+       <property name="text">
+        <string>Commerce</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Industrie</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Public</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QPushButton" name="pushButton_22">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>500</y>
+        <width>431</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>-1</pointsize>
+        <italic>false</italic>
+        <fontweight>DemiBold</fontweight>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
     background-color: qlineargradient(
         x1:0, y1:0,
         x2:0, y2:1,
@@ -2690,439 +1782,46 @@ QPushButton:disabled {
     color: #6E7F91;
 }
 </string>
-        </property>
-        <property name="text">
-         <string>🚛tournees</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_36">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>330</y>
-          <width>221</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-          <italic>false</italic>
-          <fontweight>DemiBold</fontweight>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #2C5F7C,
-        stop:0.5 #3A6EA5,
-        stop:1 #1B3A57
-    );
-
-    color: white;
+      </property>
+      <property name="text">
+       <string>✓ Valider l'ajout</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_annuler_ajout">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>560</y>
+        <width>431</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>-1</pointsize>
+        <italic>false</italic>
+        <fontweight>DemiBold</fontweight>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: #E8ECF0;
+    color: #2A3439;
     font-size: 14px;
     font-weight: 600;
-
     border: none;
     border-radius: 14px;
-
     padding: 10px 22px;
 }
 
-/* ✨ HOVER : lumière douce */
 QPushButton:hover {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #3A6EA5,
-        stop:0.5 #4A86C5,
-        stop:1 #2C5F7C
-    );
-}
-
-/* 🔘 CLICK (pressed) */
-QPushButton:pressed {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #1B3A57,
-        stop:1 #2C5F7C
-    );
-}
-
-/* 🚫 Désactivé */
-QPushButton:disabled {
-    background-color: #C8D3DF;
-    color: #6E7F91;
+    background-color: #D1DCE5;
 }
 </string>
-        </property>
-        <property name="text">
-         <string>🧑🏻‍💻employés</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_37">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>390</y>
-          <width>221</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-          <italic>false</italic>
-          <fontweight>DemiBold</fontweight>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #2C5F7C,
-        stop:0.5 #3A6EA5,
-        stop:1 #1B3A57
-    );
-
-    color: white;
-    font-size: 14px;
-    font-weight: 600;
-
-    border: none;
-    border-radius: 14px;
-
-    padding: 10px 22px;
-}
-
-/* ✨ HOVER : lumière douce */
-QPushButton:hover {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #3A6EA5,
-        stop:0.5 #4A86C5,
-        stop:1 #2C5F7C
-    );
-}
-
-/* 🔘 CLICK (pressed) */
-QPushButton:pressed {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #1B3A57,
-        stop:1 #2C5F7C
-    );
-}
-
-/* 🚫 Désactivé */
-QPushButton:disabled {
-    background-color: #C8D3DF;
-    color: #6E7F91;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>🧑‍🧑‍🧒‍🧒clients</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_38">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>450</y>
-          <width>221</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-          <italic>false</italic>
-          <fontweight>DemiBold</fontweight>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #2C5F7C,
-        stop:0.5 #3A6EA5,
-        stop:1 #1B3A57
-    );
-
-    color: white;
-    font-size: 14px;
-    font-weight: 600;
-
-    border: none;
-    border-radius: 14px;
-
-    padding: 10px 22px;
-}
-
-/* ✨ HOVER : lumière douce */
-QPushButton:hover {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #3A6EA5,
-        stop:0.5 #4A86C5,
-        stop:1 #2C5F7C
-    );
-}
-
-/* 🔘 CLICK (pressed) */
-QPushButton:pressed {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #1B3A57,
-        stop:1 #2C5F7C
-    );
-}
-
-/* 🚫 Désactivé */
-QPushButton:disabled {
-    background-color: #C8D3DF;
-    color: #6E7F91;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>🚮conteneurs</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="acceuil">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>270</y>
-          <width>221</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-          <italic>false</italic>
-          <fontweight>DemiBold</fontweight>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #2C5F7C,
-        stop:0.5 #3A6EA5,
-        stop:1 #1B3A57
-    );
-
-    color: white;
-    font-size: 14px;
-    font-weight: 600;
-
-    border: none;
-    border-radius: 14px;
-
-    padding: 10px 22px;
-}
-
-/* ✨ HOVER : lumière douce */
-QPushButton:hover {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #3A6EA5,
-        stop:0.5 #4A86C5,
-        stop:1 #2C5F7C
-    );
-}
-
-/* 🔘 CLICK (pressed) */
-QPushButton:pressed {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #1B3A57,
-        stop:1 #2C5F7C
-    );
-}
-
-/* 🚫 Désactivé */
-QPushButton:disabled {
-    background-color: #C8D3DF;
-    color: #6E7F91;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>💡acceuil</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_45">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>570</y>
-          <width>221</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-          <italic>false</italic>
-          <fontweight>DemiBold</fontweight>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #2C5F7C,
-        stop:0.5 #3A6EA5,
-        stop:1 #1B3A57
-    );
-
-    color: white;
-    font-size: 14px;
-    font-weight: 600;
-
-    border: none;
-    border-radius: 14px;
-
-    padding: 10px 22px;
-}
-
-/* ✨ HOVER : lumière douce */
-QPushButton:hover {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #3A6EA5,
-        stop:0.5 #4A86C5,
-        stop:1 #2C5F7C
-    );
-}
-
-/* 🔘 CLICK (pressed) */
-QPushButton:pressed {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #1B3A57,
-        stop:1 #2C5F7C
-    );
-}
-
-/* 🚫 Désactivé */
-QPushButton:disabled {
-    background-color: #C8D3DF;
-    color: #6E7F91;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>♻️recyclage</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="dec">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>780</y>
-          <width>221</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-          <italic>false</italic>
-          <fontweight>DemiBold</fontweight>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #2C5F7C,
-        stop:0.5 #3A6EA5,
-        stop:1 #1B3A57
-    );
-
-    color: white;
-    font-size: 14px;
-    font-weight: 600;
-
-    border: none;
-    border-radius: 14px;
-
-    padding: 10px 22px;
-}
-
-/* ✨ HOVER : lumière douce */
-QPushButton:hover {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #3A6EA5,
-        stop:0.5 #4A86C5,
-        stop:1 #2C5F7C
-    );
-}
-
-/* 🔘 CLICK (pressed) */
-QPushButton:pressed {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #1B3A57,
-        stop:1 #2C5F7C
-    );
-}
-
-/* 🚫 Désactivé */
-QPushButton:disabled {
-    background-color: #C8D3DF;
-    color: #6E7F91;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>⚙️deconnextion</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_79">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>251</width>
-          <height>271</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="pixmap">
-         <pixmap resource="rs_employe.qrc">:/aa.png</pixmap>
-        </property>
-        <property name="scaledContents">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </widget>
+      </property>
+      <property name="text">
+       <string>✗ Annuler</string>
+      </property>
      </widget>
     </widget>
    </widget>
@@ -3130,7 +1829,7 @@ QPushButton:disabled {
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="rs_employe.qrc"/>
+  <include location="ressources.qrc"/>
  </resources>
  <connections/>
 </ui>

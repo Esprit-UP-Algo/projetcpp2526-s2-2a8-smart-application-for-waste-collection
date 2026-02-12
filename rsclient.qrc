@@ -1,6 +1,4 @@
 <RCC>
     <qresource prefix="/">
-        <file>../5/rs5.qrc</file>
-        <file>../employe/aa.png</file>
     </qresource>
 </RCC>
