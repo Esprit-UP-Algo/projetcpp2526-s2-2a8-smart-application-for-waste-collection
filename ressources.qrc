@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>wasteflow.png</file>
+    </qresource>
+</RCC>
