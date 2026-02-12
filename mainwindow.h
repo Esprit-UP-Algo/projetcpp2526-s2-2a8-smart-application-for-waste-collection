@@ -50,6 +50,11 @@ private slots:
 
     void on_pushButton_28_clicked();
 
+    void on_pushButton_client_ajouter_clicked();
+private:
+    void afficherWidgetAjoutEmploye();
+
+
 private:
     Ui::MainWindow *ui;
 };
