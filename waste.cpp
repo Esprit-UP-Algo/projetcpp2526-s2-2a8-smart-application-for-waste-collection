@@ -1,5 +1,32 @@
 #include "waste.h"
 #include "ui_waste.h"
+#include "mainwindow.h"
+
+#include <QMessageBox>
+#include <QDialog>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QGridLayout>
+#include <QFrame>
+#include <QLabel>
+#include <QLineEdit>
+#include <QComboBox>
+#include <QPushButton>
+#include <QScrollArea>
+#include <QTableWidget>
+#include <QHeaderView>
+#include <QFileDialog>
+#include <QPdfWriter>
+#include <QPainter>
+#include <QProgressBar>
+#include <QGraphicsDropShadowEffect>
+#include <QPropertyAnimation>
+#include <QEasingCurve>
+#include <QDir>
+#include <QPageSize>
+#include <QMarginsF>
+#include <algorithm>
+
 
 // ============================================
 // CONSTRUCTEUR ET DESTRUCTEUR
@@ -1381,4 +1408,10 @@ void Waste::on_dec_acc_clicked()
 {
     // déconnexion - retour à la page de connexion
     ui->stackedWidget_global->setCurrentIndex(0);
+}
+void Waste::ouvrirModuleConteneurs()
+{
+    MainWindow *w = new MainWindow(this);
+    w->setAttribute(Qt::WA_DeleteOnClose);
+    w->show();
 }

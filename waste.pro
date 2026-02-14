@@ -10,12 +10,15 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
+    mainwindow.cpp \
     waste.cpp
 
 HEADERS += \
+    mainwindow.h \
     waste.h
 
 FORMS += \
+    mainwindow.ui \
     waste.ui
 
 # Default rules for deployment.
