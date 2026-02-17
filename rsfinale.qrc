@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>../../../Downloads/55.avif</file>
+        <file>../employe/im2.jpg</file>
+        <file>../employe/aa.png</file>
+        <file>../../../Downloads/p-Photoroom.png</file>
+    </qresource>
+</RCC>
