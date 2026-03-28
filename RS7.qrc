@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/Downloads">
+        <file alias="6938839_3409297.jpg">6938839_3409297.jpg</file>
+        <file alias="1 (2).png">1 (2).png</file>
+        <file alias="p.png">p.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>im2.jpg</file>
+        <file>aa.png</file>
+        <file>55.avif</file>
+    </qresource>
+</RCC>
