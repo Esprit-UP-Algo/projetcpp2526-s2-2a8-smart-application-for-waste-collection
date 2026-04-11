@@ -4,6 +4,8 @@
 #include <QString>
 #include <QSqlQuery>
 #include <QSqlQueryModel>
+#include <QTableWidget>
+#include <QWidget>
 
 class Employe
 {
@@ -24,7 +26,7 @@ public:
             QString email, QString poste, QString telephone,
             double salaire, QString dateEmbauche, QString service);
 
-    // Getters
+    // ── Getters ──────────────────────────────────────────────────
     QString getCin()          const { return cin; }
     QString getNom()          const { return nom; }
     QString getPrenom()       const { return prenom; }
@@ -35,7 +37,7 @@ public:
     QString getDateEmbauche() const { return dateEmbauche; }
     QString getService()      const { return service; }
 
-    // Setters
+    // ── Setters ──────────────────────────────────────────────────
     void setCin(QString v)          { cin          = v; }
     void setNom(QString v)          { nom          = v; }
     void setPrenom(QString v)       { prenom       = v; }
@@ -46,13 +48,29 @@ public:
     void setDateEmbauche(QString v) { dateEmbauche = v; }
     void setService(QString v)      { service      = v; }
 
-    // CRUD
+    // ── CRUD ─────────────────────────────────────────────────────
     bool            ajouter();
-    QSqlQueryModel* afficher();
+    QSqlQueryModel* afficher();          // lecture simple (initial)
     bool            supprimer(QString cin);
     bool            modifier(QString cin);
-    int  compterClientsLies(QString cin);
+
+    // ── Utilitaires ──────────────────────────────────────────────
+    int compterClientsLies(QString cin);
     QList<QPair<QString,QString>> getListeCinNom();
+
+    // ── Recherche (comme Client) ──────────────────────────────────
+    static void rechercherDansTable(QTableWidget *table, const QString &text);
+
+    // ── Tri + filtre (comme Client::loadClientsIntoTable) ────────
+    void loadEmployesIntoTable(QTableWidget *table,
+                               const QString &orderBy,
+                               const QString &filterService = "");
+
+    // ── Export PDF / Word (comme Client) ─────────────────────────
+    void exporterListe(QTableWidget *table);
+
+    // ── Statistiques (comme Client) ───────────────────────────────
+    void afficherStatistiques(QWidget *parent);
 };
 
 #endif // EMPLOYE_H

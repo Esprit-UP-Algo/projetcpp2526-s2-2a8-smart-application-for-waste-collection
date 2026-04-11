@@ -3,10 +3,10 @@
 
 #include <QString>
 #include <QList>
+#include <QTableWidget>
+#include <QWidget>
 #include <QSqlQuery>
 #include <QSqlError>
-#ifndef CONTENEUR_H
-#endif // CONTENEUR_H
 
 class Conteneur
 {
@@ -19,20 +19,17 @@ public:
               const QString &etat, const QString &dateDerniereCollecte);
 
     // Getters
-    int     getId()                    const;
-    double  getCapacite()              const;
-    QString getTypePropriete()         const;
-    QString getAdresseComplete()       const;
-    QString getLocalisationGPS()       const;
-    QString getAccepteMenager()        const;
-    QString getAccepteRecyclable()     const;
-    QString getAccepteOrganique()      const;
-    QString getAccepteIndustriel()     const;
-    QString getEtat()                  const;
-    QString getDateDerniereCollecte()  const;
-    int totalConteneurs;
-    int avecValeur;
-    int avecDestination;
+    int     getId()                   const;
+    double  getCapacite()             const;
+    QString getTypePropriete()        const;
+    QString getAdresseComplete()      const;
+    QString getLocalisationGPS()      const;
+    QString getAccepteMenager()       const;
+    QString getAccepteRecyclable()    const;
+    QString getAccepteOrganique()     const;
+    QString getAccepteIndustriel()    const;
+    QString getEtat()                 const;
+    QString getDateDerniereCollecte() const;
 
     // Setters
     void setId(int id);
@@ -57,6 +54,20 @@ public:
     // Validation
     bool estValide() const;
 
+    // Recherche dans QTableWidget (comme Client)
+    static void rechercherDansTable(QTableWidget *table, const QString &text);
+
+    // Export liste
+    void exporterListe(QTableWidget *table);
+
+    // Statistiques
+    void afficherStatistiques(QWidget *parent);
+
+    // Tri + filtre dans table
+    void loadConteneursIntoTable(QTableWidget *table,
+                                 const QString &orderBy,
+                                 const QString &filterEtat);
+
 private:
     int     m_id;
     double  m_capacite;
@@ -70,6 +81,5 @@ private:
     QString m_etat;
     QString m_dateDerniereCollecte;
 };
-
 
 #endif // CONTENEUR_H

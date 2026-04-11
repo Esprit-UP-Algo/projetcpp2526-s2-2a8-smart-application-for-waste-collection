@@ -17,13 +17,9 @@ SOURCES += \
     connection.cpp \
     conteneur.cpp \
     employe.cpp \
-    exporter.cpp \
     main.cpp \
     mainwindow.cpp \
-    recherche.cpp \
-    recyclage.cpp \
-    stat.cpp \
-    tri.cpp
+    recyclage.cpp
 
 HEADERS += \
     client.h \
@@ -31,12 +27,8 @@ HEADERS += \
     connection.h \
     conteneur.h \
     employe.h \
-    exporter.h \
     mainwindow.h \
-    recherche.h \
-    recyclage.h \
-    stat.h \
-    tri.h
+    recyclage.h
 
 FORMS += \
     mainwindow.ui

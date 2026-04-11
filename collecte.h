@@ -3,6 +3,8 @@
 
 #include <QString>
 #include <QList>
+#include <QTableWidget>
+#include <QWidget>
 #include <QSqlQuery>
 #include <QSqlError>
 
@@ -15,13 +17,13 @@ public:
              double distanceTotale, const QString &observations);
 
     // Getters
-    int     getId()                 const;
-    QString getDateCollecte()       const;
-    QString getTypeDechet()         const;
-    double  getQuantiteCollectee()  const;
-    QString getStatut()             const;
-    double  getDistanceTotale()     const;
-    QString getObservations()       const;
+    int     getId()                const;
+    QString getDateCollecte()      const;
+    QString getTypeDechet()        const;
+    double  getQuantiteCollectee() const;
+    QString getStatut()            const;
+    double  getDistanceTotale()    const;
+    QString getObservations()      const;
 
     // Setters
     void setId(int id);
@@ -41,6 +43,20 @@ public:
 
     // Validation
     bool estValide() const;
+
+    // Recherche dans QTableWidget (comme Client)
+    static void rechercherDansTable(QTableWidget *table, const QString &text);
+
+    // Export liste
+    void exporterListe(QTableWidget *table);
+
+    // Statistiques
+    void afficherStatistiques(QWidget *parent);
+
+    // Tri + filtre dans table
+    void loadCollectesIntoTable(QTableWidget *table,
+                                const QString &orderBy,
+                                const QString &filterStatut);
 
 private:
     int     m_id;

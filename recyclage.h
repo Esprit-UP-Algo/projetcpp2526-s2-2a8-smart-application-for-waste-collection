@@ -3,13 +3,14 @@
 
 #include <QString>
 #include <QList>
+#include <QTableWidget>
+#include <QWidget>
 #include <QSqlQuery>
 #include <QSqlError>
 
 class Recyclage
 {
 public:
-    // Constructeurs
     Recyclage();
     Recyclage(int id, const QString &dateTri, const QString &typeMateriau,
               double quantiteEntree, double quantiteRecyclee, double quantiteRejetee,
@@ -30,15 +31,15 @@ public:
 
     // Setters
     void setId(int id);
-    void setDateTri(const QString &dateTri);
-    void setTypeMateriau(const QString &type);
+    void setDateTri(const QString &v);
+    void setTypeMateriau(const QString &v);
     void setQuantiteEntree(double v);
     void setQuantiteRecyclee(double v);
     void setQuantiteRejetee(double v);
-    void setDestination(const QString &dest);
+    void setDestination(const QString &v);
     void setValeurMonetaire(double v);
-    void setDirection(const QString &dir);
-    void setStatut(const QString &statut);
+    void setDirection(const QString &v);
+    void setStatut(const QString &v);
 
     // CRUD
     bool ajouter();
@@ -49,6 +50,20 @@ public:
 
     // Validation
     bool estValide() const;
+
+    // Recherche dans QTableWidget (comme Client)
+    static void rechercherDansTable(QTableWidget *table, const QString &text);
+
+    // Export liste
+    void exporterListe(QTableWidget *table);
+
+    // Statistiques
+    void afficherStatistiques(QWidget *parent);
+
+    // Tri + filtre dans table
+    void loadRecyclagesIntoTable(QTableWidget *table,
+                                 const QString &orderBy,
+                                 const QString &filterStatut);
 
 private:
     int     m_id;
