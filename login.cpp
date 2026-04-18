@@ -82,3 +82,44 @@ bool Login::verifierLogin(const QString &email, const QString &mdp)
         return q.value(0).toInt() > 0;
     return false;
 }
+QString Login::getPosteUtilisateur(const QString &email)
+{
+    if (email.trimmed() == "admin@smartmarket.com")
+        return "admin";
+
+    QSqlQuery q;
+    q.prepare("SELECT Poste FROM EMPLOYES WHERE Email = :email");
+    q.bindValue(":email", email.trimmed());
+    if (q.exec() && q.next())
+        return q.value(0).toString().toLower();
+
+    return "employe";
+}
+//laccee
+QString Login::getNomUtilisateur(const QString &email)
+{
+    if (email.trimmed() == "admin@smartmarket.com")
+        return "Administrateur";
+
+    QSqlQuery q;
+    q.prepare("SELECT Nom, Prenom FROM EMPLOYES WHERE Email = :email");
+    q.bindValue(":email", email.trimmed());
+    if (q.exec() && q.next())
+        return q.value(0).toString() + " " + q.value(1).toString();
+
+    return email;
+}
+bool Login::reinitialiserMdp(const QString &email, const QString &nouveauMdp)
+{
+    QSqlQuery q;
+    q.prepare("SELECT COUNT(*) FROM EMPLOYES WHERE Email = :email");
+    q.bindValue(":email", email.trimmed());
+    if (!q.exec() || !q.next() || q.value(0).toInt() == 0)
+        return false;
+
+    QSqlQuery update;
+    update.prepare("UPDATE EMPLOYES SET MDP = :mdp WHERE Email = :email");
+    update.bindValue(":mdp",   nouveauMdp.trimmed());
+    update.bindValue(":email", email.trimmed());
+    return update.exec();
+}

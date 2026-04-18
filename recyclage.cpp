@@ -221,6 +221,27 @@ Recyclage Recyclage::getById(int id)
 }
 
 // ============================================================
+// Vérification FK — Architecture Modèle-Vue
+// ============================================================
+int Recyclage::compterLiensRealiser(int id)
+{
+    QSqlQuery q;
+    q.prepare("SELECT COUNT(*) FROM REALISER WHERE ID_recyclage = :id");
+    q.bindValue(":id", id);
+    if (q.exec() && q.next()) return q.value(0).toInt();
+    return 0;
+}
+
+int Recyclage::compterLiensFournir(int id)
+{
+    QSqlQuery q;
+    q.prepare("SELECT COUNT(*) FROM FOURNIR WHERE ID_recyclage = :id");
+    q.bindValue(":id", id);
+    if (q.exec() && q.next()) return q.value(0).toInt();
+    return 0;
+}
+
+// ============================================================
 // Recherche dans QTableWidget
 // ============================================================
 void Recyclage::rechercherDansTable(QTableWidget *table, const QString &text)
@@ -366,12 +387,11 @@ void Recyclage::afficherStatistiques(QWidget *parent)
         if (q.exec() && q.next()) return q.value(0).toInt();
         return 0;
     };
-    int termine  = countStatut("Terminé");
-    int enCours  = countStatut("En cours");
-    int annule   = countStatut("Annulé");
-    int enAttente= countStatut("En attente");
+    int termine   = countStatut("Terminé");
+    int enCours   = countStatut("En cours");
+    int annule    = countStatut("Annulé");
+    int enAttente = countStatut("En attente");
 
-    // ── UI
     QDialog *dlg = new QDialog(parent);
     dlg->setWindowTitle("📊 Statistiques des Recyclages");
     dlg->setFixedSize(780, 620);
@@ -406,14 +426,13 @@ void Recyclage::afficherStatistiques(QWidget *parent)
 
     QHBoxLayout *kpiRow = new QHBoxLayout();
     kpiRow->setSpacing(12);
-    kpiRow->addWidget(makeKPI("♻️", QString::number(total),                      "Total recyclages",  "#2C5F7C"));
-    kpiRow->addWidget(makeKPI("💰", QString::number(valeurTotale,'f',2)+" TND",  "Valeur totale",     "#27AE60"));
-    kpiRow->addWidget(makeKPI("✅", QString::number(termine),                    "Terminés",          "#10B981"));
-    kpiRow->addWidget(makeKPI("⏳", QString::number(enCours),                    "En cours",          "#E67E22"));
-    kpiRow->addWidget(makeKPI("❌", QString::number(annule),                     "Annulés",           "#E74C3C"));
+    kpiRow->addWidget(makeKPI("♻️", QString::number(total),                     "Total recyclages", "#2C5F7C"));
+    kpiRow->addWidget(makeKPI("💰", QString::number(valeurTotale,'f',2)+" TND", "Valeur totale",    "#27AE60"));
+    kpiRow->addWidget(makeKPI("✅", QString::number(termine),                   "Terminés",         "#10B981"));
+    kpiRow->addWidget(makeKPI("⏳", QString::number(enCours),                   "En cours",         "#E67E22"));
+    kpiRow->addWidget(makeKPI("❌", QString::number(annule),                    "Annulés",          "#E74C3C"));
     mainLay->addLayout(kpiRow);
 
-    // Quantités recyclées
     QFrame *qteCard = new QFrame();
     qteCard->setStyleSheet("QFrame { background:white; border-radius:12px; }");
     QHBoxLayout *qteLay = new QHBoxLayout(qteCard);
@@ -426,9 +445,9 @@ void Recyclage::afficherStatistiques(QWidget *parent)
         l->setStyleSheet("font-size:11px; color:#6B7280;");
         vl->addWidget(v); vl->addWidget(l); return vl;
     };
-    qteLay->addLayout(makeStat("Qté Recyclée (kg)",    QString::number(qteTotale,'f',2)));
+    qteLay->addLayout(makeStat("Qté Recyclée (kg)", QString::number(qteTotale,'f',2)));
     qteLay->addSpacing(30);
-    qteLay->addLayout(makeStat("En attente",            QString::number(enAttente)));
+    qteLay->addLayout(makeStat("En attente",         QString::number(enAttente)));
     mainLay->addWidget(qteCard);
 
     QPushButton *closeBtn = new QPushButton("✕  Fermer");
