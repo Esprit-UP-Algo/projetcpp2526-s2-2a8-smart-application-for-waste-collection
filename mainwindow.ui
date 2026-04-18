@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="page"/>
     <widget class="QWidget" name="page_18">
@@ -990,7 +990,7 @@ QPushButton:disabled {
        </rect>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="page_3">
        <widget class="QFrame" name="frame_6">
@@ -1586,6 +1586,74 @@ QPushButton:disabled {
            <string>Trier</string>
           </property>
          </widget>
+         <widget class="QPushButton" name="bouttonqrrecyclage">
+          <property name="geometry">
+           <rect>
+            <x>420</x>
+            <y>10</y>
+            <width>131</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>-1</pointsize>
+            <italic>false</italic>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #2C5F7C,
+        stop:0.5 #3A6EA5,
+        stop:1 #1B3A57
+    );
+
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+
+    border: none;
+    border-radius: 14px;
+
+    padding: 10px 22px;
+}
+
+/* ✨ HOVER : lumière douce */
+QPushButton:hover {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #3A6EA5,
+        stop:0.5 #4A86C5,
+        stop:1 #2C5F7C
+    );
+}
+
+/* 🔘 CLICK (pressed) */
+QPushButton:pressed {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #1B3A57,
+        stop:1 #2C5F7C
+    );
+}
+
+/* 🚫 Désactivé */
+QPushButton:disabled {
+    background-color: #C8D3DF;
+    color: #6E7F91;
+}
+</string>
+          </property>
+          <property name="text">
+           <string>📱 QR Code</string>
+          </property>
+         </widget>
         </widget>
         <widget class="QTableWidget" name="tableWidget_Recyclage">
          <property name="geometry">
@@ -1836,6 +1904,244 @@ QTableWidget::item:alternate, QTableView::item:alternate {
            <string>status</string>
           </property>
          </column>
+        </widget>
+        <widget class="QGroupBox" name="groupBox">
+         <property name="geometry">
+          <rect>
+           <x>240</x>
+           <y>410</y>
+           <width>781</width>
+           <height>371</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">/* ── FOND GÉNÉRAL DE LA SECTION ── */
+QFrame#frameClassification,
+QWidget#widgetClassification {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                    stop:0 #1a1a2e, stop:1 #16213e);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+/* ── TITRE ── */
+QLabel#labelTitreClassif {
+    color: #blanc;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: &quot;Segoe UI&quot;;
+    letter-spacing: 1px;
+    padding-bottom: 10px;
+}
+
+/* ── COMBOBOX ── */
+QComboBox {
+    background-color: #0f3460;
+    color: #ffffff;
+    border: 1px solid #00cec9;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-family: &quot;Segoe UI&quot;;
+    min-width: 140px;
+}
+
+QComboBox:hover {
+    border-color: #74b9ff;
+    background-color: #1a4a7a;
+}
+
+QComboBox::drop-down {
+    border: none;
+    width: 28px;
+}
+
+QComboBox::down-arrow {
+    width: 12px;
+    height: 12px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #0f3460;
+    color: #ffffff;
+    border: 1px solid #00cec9;
+    selection-background-color: #00cec9;
+    selection-color: #000000;
+    border-radius: 6px;
+}
+
+/* ── BOUTON CLASSIFIER ── */
+QPushButton#btnClassifier {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                    stop:0 #00b894, stop:1 #00cec9);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: &quot;Segoe UI&quot;;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 30px;
+    letter-spacing: 1px;
+}
+
+QPushButton#btnClassifier:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                    stop:0 #00cec9, stop:1 #74b9ff);
+}
+
+QPushButton#btnClassifier:pressed {
+    background-color: #009e7f;
+    padding-top: 12px;
+}
+
+/* ── LABEL RÉSULTAT ── */
+QLabel#labelResultatClassif {
+    background-color: transparent;
+    color: #dfe6e9;
+    font-family: &quot;Segoe UI&quot;;
+    font-size: 13px;
+    border-radius: 10px;
+    padding: 12px;
+    min-height: 160px;
+}
+QGroupBox {
+    border: none;
+    margin-top: 10px;
+    font-weight: bold;
+    color: white;
+}</string>
+         </property>
+         <property name="title">
+          <string/>
+         </property>
+         <widget class="QComboBox" name="comboTypeDechet">
+          <property name="geometry">
+           <rect>
+            <x>140</x>
+            <y>50</y>
+            <width>166</width>
+            <height>26</height>
+           </rect>
+          </property>
+          <item>
+           <property name="text">
+            <string>choisir</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Plastique </string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Papier</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Métal</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Verre </string>
+           </property>
+          </item>
+         </widget>
+         <widget class="QComboBox" name="comboEtatDechet">
+          <property name="geometry">
+           <rect>
+            <x>440</x>
+            <y>40</y>
+            <width>166</width>
+            <height>26</height>
+           </rect>
+          </property>
+          <item>
+           <property name="text">
+            <string>choisir</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Propre</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Sale</string>
+           </property>
+          </item>
+         </widget>
+         <widget class="QPushButton" name="btnClassifier">
+          <property name="geometry">
+           <rect>
+            <x>280</x>
+            <y>110</y>
+            <width>131</width>
+            <height>29</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton#btnClassifier {
+    background-color: #27ae60;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 8px 20px;
+}
+QPushButton#btnClassifier:hover {
+    background-color: #219150;
+}
+QPushButton#btnClassifier:pressed {
+    background-color: #1a7a42;
+}</string>
+          </property>
+          <property name="text">
+           <string>Classifier ♻️</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="labelResultatClassif">
+          <property name="geometry">
+           <rect>
+            <x>110</x>
+            <y>169</y>
+            <width>491</width>
+            <height>184</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(255, 255, 255);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="textFormat">
+           <enum>Qt::TextFormat::RichText</enum>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label">
+          <property name="geometry">
+           <rect>
+            <x>210</x>
+            <y>10</y>
+            <width>321</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">
+background-color: rgb(255, 255, 255); QLabel { font-size: 22px; font-weight: bold; qproperty-alignment: AlignCenter; margin: 10px; }</string>
+          </property>
+          <property name="text">
+           <string>              classification des dechets</string>
+          </property>
+         </widget>
         </widget>
        </widget>
       </widget>

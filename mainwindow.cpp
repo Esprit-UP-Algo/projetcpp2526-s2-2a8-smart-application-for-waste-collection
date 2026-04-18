@@ -37,6 +37,8 @@
 #include <QAction>
 #include <QFont>
 #include <QTimer>
+#include "recyclageqr.h"
+#include "classificationdechet.h"   // ← ajouter cette ligne
 
 // ================================================================
 // === CONSTRUCTEUR & DESTRUCTEUR =================================
@@ -81,6 +83,9 @@ MainWindow::MainWindow(QWidget *parent)
                 else
                     QMessageBox::warning(this, "SMS", response);
             });
+    //classification dechet
+    connect(ui->btnClassifier, &QPushButton::clicked,
+            this, &MainWindow::on_btnClassifier_clicked);
 
     // ── Animation lumineuse ──────────────────────────────────────
     QGraphicsDropShadowEffect *glow = new QGraphicsDropShadowEffect(this);
@@ -2061,7 +2066,37 @@ Recyclage MainWindow::getRecyclageSelectionne()
     if (row < 0) return Recyclage();
     return Recyclage::getById(ui->tableWidget_Recyclage->item(row, 0)->text().toInt());
 }
+void MainWindow::on_bouttonqrrecyclage_clicked()
+{
+    QList<QTableWidgetItem*> selected = ui->tableWidget_Recyclage->selectedItems();
+    if (selected.isEmpty()) {
+        QMessageBox::warning(this, "Sélection requise",
+                             "Veuillez sélectionner un recyclage dans la liste.");
+        return;
+    }
+    int row = selected.first()->row();
+    QTableWidgetItem *idItem = ui->tableWidget_Recyclage->item(row, 0);
+    if (!idItem) return;
+    int id = idItem->text().toInt();
+    Recyclage r = Recyclage::getById(id);
+    RecyclageQR::afficherDialogQR(r, this);
+}
 
+void MainWindow::on_btnClassifier_clicked()
+{
+    QString typeDechet = ui->comboTypeDechet->currentText();
+    QString etat       = ui->comboEtatDechet->currentText();
+    ClassificationDechet cd(typeDechet, etat);
+    ResultatClassification r = cd.calculerResultat();
+    QString html = ClassificationDechet::formatResultatHTML(r);
+    ui->labelResultatClassif->setTextFormat(Qt::RichText);
+    ui->labelResultatClassif->setWordWrap(true);
+    ui->labelResultatClassif->setAlignment(Qt::AlignTop | Qt::AlignLeft);
+    ui->labelResultatClassif->setMinimumHeight(200);
+    ui->labelResultatClassif->setText(html);
+    ui->labelResultatClassif->setVisible(true);
+    ui->labelResultatClassif->repaint();
+}
 // ================================================================
 // === MODULE COLLECTE — AFFICHAGE =================================
 // ================================================================

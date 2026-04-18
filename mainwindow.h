@@ -79,6 +79,8 @@ private slots:
     void on_barrerechercherecyclage_textChanged(const QString &text);
     void on_bouttonexporterrecyclage_clicked();
     void on_bouttonstatrecyclage_clicked();
+    void on_bouttonqrrecyclage_clicked();
+    void on_btnClassifier_clicked();
 
     // ================================================================
     // === MODULE COLLECTE ============================================

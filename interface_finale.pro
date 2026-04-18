@@ -5,6 +5,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 CONFIG += c++17
 
 SOURCES += \
+    classificationdechet.cpp \
     client.cpp \
     collecte.cpp \
     connection.cpp \
@@ -17,9 +18,11 @@ SOURCES += \
     mdp_oublier.cpp \
     parametres_employe.cpp \
     recyclage.cpp \
+    recyclageqr.cpp \
     smsclient.cpp
 
 HEADERS += \
+    classificationdechet.h \
     client.h \
     collecte.h \
     connection.h \
@@ -31,6 +34,7 @@ HEADERS += \
     mdp_oublier.h \
     parametres_employe.h \
     recyclage.h \
+    recyclageqr.h \
     smsclient.h
 
 FORMS += \
