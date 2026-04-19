@@ -1,6 +1,5 @@
 #ifndef CONTENEUR_H
 #define CONTENEUR_H
-
 #include <QString>
 #include <QList>
 #include <QTableWidget>
@@ -51,10 +50,13 @@ public:
     static QList<Conteneur> getAll();
     static Conteneur getById(int id);
 
+    // Vérification FK (Architecture Modèle-Vue)
+    static int compterLiensConsommer(int id);
+
     // Validation
     bool estValide() const;
 
-    // Recherche dans QTableWidget (comme Client)
+    // Recherche dans QTableWidget
     static void rechercherDansTable(QTableWidget *table, const QString &text);
 
     // Export liste

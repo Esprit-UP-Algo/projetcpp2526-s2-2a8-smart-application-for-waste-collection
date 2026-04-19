@@ -195,6 +195,27 @@ Collecte Collecte::getById(int id)
 }
 
 // ============================================================
+// Vérification FK — Architecture Modèle-Vue
+// ============================================================
+int Collecte::compterLiensConsommer(int id)
+{
+    QSqlQuery q;
+    q.prepare("SELECT COUNT(*) FROM CONSOMMER WHERE ID_collecte = :id");
+    q.bindValue(":id", id);
+    if (q.exec() && q.next()) return q.value(0).toInt();
+    return 0;
+}
+
+int Collecte::compterLiensFournir(int id)
+{
+    QSqlQuery q;
+    q.prepare("SELECT COUNT(*) FROM FOURNIR WHERE ID_collecte = :id");
+    q.bindValue(":id", id);
+    if (q.exec() && q.next()) return q.value(0).toInt();
+    return 0;
+}
+
+// ============================================================
 // Recherche dans QTableWidget
 // ============================================================
 void Collecte::rechercherDansTable(QTableWidget *table, const QString &text)
@@ -342,7 +363,6 @@ void Collecte::afficherStatistiques(QWidget *parent)
         qteMin   = q.value(2).toDouble();
     }
 
-    // ── UI
     QDialog *dlg = new QDialog(parent);
     dlg->setWindowTitle("📊 Statistiques des Collectes");
     dlg->setFixedSize(780, 620);
@@ -384,7 +404,6 @@ void Collecte::afficherStatistiques(QWidget *parent)
     kpiRow->addWidget(makeKPI("❌", QString::number(annulee),  "Annulées",        "#E74C3C"));
     mainLay->addLayout(kpiRow);
 
-    // Quantités
     QFrame *qteCard = new QFrame();
     qteCard->setStyleSheet("QFrame { background:white; border-radius:12px; }");
     QHBoxLayout *qteLay = new QHBoxLayout(qteCard);

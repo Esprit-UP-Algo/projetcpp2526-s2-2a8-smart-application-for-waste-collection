@@ -232,7 +232,19 @@ Conteneur Conteneur::getById(int id)
 }
 
 // ============================================================
-// Recherche dans QTableWidget (requête préparée côté UI)
+// Vérification FK — Architecture Modèle-Vue
+// ============================================================
+int Conteneur::compterLiensConsommer(int id)
+{
+    QSqlQuery q;
+    q.prepare("SELECT COUNT(*) FROM CONSOMMER WHERE ID_conteneur = :id");
+    q.bindValue(":id", id);
+    if (q.exec() && q.next()) return q.value(0).toInt();
+    return 0;
+}
+
+// ============================================================
+// Recherche dans QTableWidget
 // ============================================================
 void Conteneur::rechercherDansTable(QTableWidget *table, const QString &text)
 {
@@ -251,13 +263,12 @@ void Conteneur::rechercherDansTable(QTableWidget *table, const QString &text)
 }
 
 // ============================================================
-// Tri + filtre — charge la table depuis la BD (requêtes préparées)
+// Tri + filtre — charge la table depuis la BD
 // ============================================================
 void Conteneur::loadConteneursIntoTable(QTableWidget *table,
                                         const QString &orderBy,
                                         const QString &filterEtat)
 {
-    // Protection anti-injection : liste blanche pour ORDER BY
     QStringList allowed = {"ID_conteneur", "Capacite", "Type_propriete",
                            "Adresse_complete", "Etat"};
     QString safeOrder = "ID_conteneur";
@@ -391,7 +402,6 @@ void Conteneur::afficherStatistiques(QWidget *parent)
     int organique  = countOui("ACCEPTE_ORGANIQUE");
     int industriel = countOui("ACCEPTE_INDUSTRIEL");
 
-    // ── UI
     QDialog *dlg = new QDialog(parent);
     dlg->setWindowTitle("📊 Statistiques des Conteneurs");
     dlg->setFixedSize(780, 680);
@@ -409,7 +419,6 @@ void Conteneur::afficherStatistiques(QWidget *parent)
         "border-radius:12px;");
     mainLay->addWidget(title);
 
-    // KPI row
     QHBoxLayout *kpiRow = new QHBoxLayout();
     kpiRow->setSpacing(12);
     auto makeKPI = [](const QString &icon, const QString &value,
@@ -426,13 +435,12 @@ void Conteneur::afficherStatistiques(QWidget *parent)
         cl->addWidget(ico); cl->addWidget(lbl);
         return card;
     };
-    kpiRow->addWidget(makeKPI("🗑️", QString::number(total),          "Total conteneurs",  "#2C5F7C"));
-    kpiRow->addWidget(makeKPI("✅", QString::number(operationnels),  "Opérationnels",     "#27AE60"));
-    kpiRow->addWidget(makeKPI("🔧", QString::number(enMaintenance), "En maintenance",    "#E67E22"));
-    kpiRow->addWidget(makeKPI("❌", QString::number(horsService),   "Hors service",      "#E74C3C"));
+    kpiRow->addWidget(makeKPI("🗑️", QString::number(total),         "Total conteneurs", "#2C5F7C"));
+    kpiRow->addWidget(makeKPI("✅", QString::number(operationnels), "Opérationnels",    "#27AE60"));
+    kpiRow->addWidget(makeKPI("🔧", QString::number(enMaintenance), "En maintenance",   "#E67E22"));
+    kpiRow->addWidget(makeKPI("❌", QString::number(horsService),   "Hors service",     "#E74C3C"));
     mainLay->addLayout(kpiRow);
 
-    // Capacités
     QFrame *capCard = new QFrame();
     capCard->setStyleSheet("QFrame { background:white; border-radius:12px; }");
     QHBoxLayout *capLay = new QHBoxLayout(capCard);
@@ -452,7 +460,6 @@ void Conteneur::afficherStatistiques(QWidget *parent)
     capLay->addLayout(makeStat("Minimum (L)", QString::number(capMin,'f',0)));
     mainLay->addWidget(capCard);
 
-    // Déchets acceptés
     QFrame *dechetCard = new QFrame();
     dechetCard->setStyleSheet("QFrame { background:white; border-radius:12px; }");
     QVBoxLayout *dechetLay = new QVBoxLayout(dechetCard);
@@ -475,8 +482,9 @@ void Conteneur::afficherStatistiques(QWidget *parent)
         QProgressBar *bar = new QProgressBar();
         bar->setRange(0, total > 0 ? total : 1); bar->setValue(d.count);
         bar->setTextVisible(false); bar->setFixedHeight(16);
-        bar->setStyleSheet(QString("QProgressBar{background:#E5E7EB;border-radius:8px;}"
-                                   "QProgressBar::chunk{background:%1;border-radius:8px;}").arg(d.color));
+        bar->setStyleSheet(QString(
+                               "QProgressBar{background:#E5E7EB;border-radius:8px;}"
+                               "QProgressBar::chunk{background:%1;border-radius:8px;}").arg(d.color));
         QLabel *numLbl = new QLabel(QString::number(d.count) + " / " + QString::number(total));
         numLbl->setFixedWidth(70); numLbl->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
         numLbl->setStyleSheet("font-size:11px; color:#6B7280;");

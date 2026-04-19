@@ -1,6 +1,5 @@
 #ifndef RECYCLAGE_H
 #define RECYCLAGE_H
-
 #include <QString>
 #include <QList>
 #include <QTableWidget>
@@ -48,10 +47,14 @@ public:
     static QList<Recyclage> getAll();
     static Recyclage getById(int id);
 
+    // Vérification FK (Architecture Modèle-Vue)
+    static int compterLiensRealiser(int id);
+    static int compterLiensFournir(int id);
+
     // Validation
     bool estValide() const;
 
-    // Recherche dans QTableWidget (comme Client)
+    // Recherche dans QTableWidget
     static void rechercherDansTable(QTableWidget *table, const QString &text);
 
     // Export liste
