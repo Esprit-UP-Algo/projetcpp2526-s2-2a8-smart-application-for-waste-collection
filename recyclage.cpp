@@ -221,6 +221,27 @@ Recyclage Recyclage::getById(int id)
 }
 
 // ============================================================
+// Vérification FK — Architecture Modèle-Vue
+// ============================================================
+int Recyclage::compterLiensRealiser(int id)
+{
+    QSqlQuery q;
+    q.prepare("SELECT COUNT(*) FROM REALISER WHERE ID_recyclage = :id");
+    q.bindValue(":id", id);
+    if (q.exec() && q.next()) return q.value(0).toInt();
+    return 0;
+}
+
+int Recyclage::compterLiensFournir(int id)
+{
+    QSqlQuery q;
+    q.prepare("SELECT COUNT(*) FROM FOURNIR WHERE ID_recyclage = :id");
+    q.bindValue(":id", id);
+    if (q.exec() && q.next()) return q.value(0).toInt();
+    return 0;
+}
+
+// ============================================================
 // Recherche dans QTableWidget
 // ============================================================
 void Recyclage::rechercherDansTable(QTableWidget *table, const QString &text)
@@ -344,49 +365,43 @@ void Recyclage::exporterListe(QTableWidget *table)
 // ============================================================
 // Statistiques
 // ============================================================
-#include <QtCharts/QChartView>
-#include <QtCharts/QPieSeries>
-#include <QtCharts/QChart>
-#include <QtCharts/QPieSlice>
-
 void Recyclage::afficherStatistiques(QWidget *parent)
 {
     QSqlQuery q;
 
-    int termine = 0;
-    int enCours = 0;
-    int annule = 0;
-    int enAttente = 0;
+    int total = 0;
+    if (q.exec("SELECT COUNT(*) FROM RECYCLAGES") && q.next())
+        total = q.value(0).toInt();
 
-    // Fonction pour compter par statut
+    double valeurTotale = 0;
+    if (q.exec("SELECT SUM(Valeur_monetaire) FROM RECYCLAGES") && q.next())
+        valeurTotale = q.value(0).toDouble();
+
+    double qteTotale = 0;
+    if (q.exec("SELECT SUM(Quantite_recyclee) FROM RECYCLAGES") && q.next())
+        qteTotale = q.value(0).toDouble();
+
     auto countStatut = [&](const QString &s) -> int {
-        QSqlQuery query;
-        query.prepare("SELECT COUNT(*) FROM RECYCLAGES WHERE UPPER(Statut)=UPPER(:s)");
-        query.bindValue(":s", s);
-        if (query.exec() && query.next())
-            return query.value(0).toInt();
+        q.prepare("SELECT COUNT(*) FROM RECYCLAGES WHERE UPPER(Statut)=UPPER(:s)");
+        q.bindValue(":s", s);
+        if (q.exec() && q.next()) return q.value(0).toInt();
         return 0;
     };
+    int termine   = countStatut("Terminé");
+    int enCours   = countStatut("En cours");
+    int annule    = countStatut("Annulé");
+    int enAttente = countStatut("En attente");
 
-    termine   = countStatut("Terminé");
-    enCours   = countStatut("En cours");
-    annule    = countStatut("Annulé");
-    enAttente = countStatut("En attente");
-
-    int total = termine + enCours + annule + enAttente;
-    if (total == 0) total = 1;
-
-    // ───────── UI ─────────
     QDialog *dlg = new QDialog(parent);
     dlg->setWindowTitle("📊 Statistiques des Recyclages");
-    dlg->setFixedSize(780, 680);
+    dlg->setFixedSize(780, 620);
     dlg->setStyleSheet("QDialog { background-color: #F0F4F8; }");
 
     QVBoxLayout *mainLay = new QVBoxLayout(dlg);
     mainLay->setContentsMargins(20, 20, 20, 20);
     mainLay->setSpacing(16);
 
-    QLabel *title = new QLabel("📊 Répartition des Statuts de Recyclage");
+    QLabel *title = new QLabel("📊 Tableau de Bord — Statistiques Recyclages");
     title->setAlignment(Qt::AlignCenter);
     title->setStyleSheet(
         "font-size:18px; font-weight:bold; color:white; padding:16px;"
@@ -394,68 +409,54 @@ void Recyclage::afficherStatistiques(QWidget *parent)
         "border-radius:12px;");
     mainLay->addWidget(title);
 
-    // ───────── PIE CHART ─────────
-    QPieSeries *series = new QPieSeries();
+    auto makeKPI = [](const QString &icon, const QString &value,
+                      const QString &label, const QString &color) {
+        QFrame *card = new QFrame();
+        card->setFixedHeight(90);
+        card->setStyleSheet(QString("QFrame { background-color:%1; border-radius:12px; }").arg(color));
+        QVBoxLayout *cl = new QVBoxLayout(card);
+        cl->setContentsMargins(14,10,14,10); cl->setSpacing(2);
+        QLabel *ico = new QLabel(icon + "  " + value);
+        ico->setStyleSheet("font-size:22px; font-weight:bold; color:white; background:transparent;");
+        QLabel *lbl = new QLabel(label);
+        lbl->setStyleSheet("font-size:11px; color:rgba(255,255,255,0.85); background:transparent;");
+        cl->addWidget(ico); cl->addWidget(lbl);
+        return card;
+    };
 
-    QPieSlice *sTermine   = series->append("Terminé", termine);
-    QPieSlice *sEnCours   = series->append("En cours", enCours);
-    QPieSlice *sAnnule    = series->append("Annulé", annule);
-    QPieSlice *sAttente   = series->append("En attente", enAttente);
+    QHBoxLayout *kpiRow = new QHBoxLayout();
+    kpiRow->setSpacing(12);
+    kpiRow->addWidget(makeKPI("♻️", QString::number(total),                     "Total recyclages", "#2C5F7C"));
+    kpiRow->addWidget(makeKPI("💰", QString::number(valeurTotale,'f',2)+" TND", "Valeur totale",    "#27AE60"));
+    kpiRow->addWidget(makeKPI("✅", QString::number(termine),                   "Terminés",         "#10B981"));
+    kpiRow->addWidget(makeKPI("⏳", QString::number(enCours),                   "En cours",         "#E67E22"));
+    kpiRow->addWidget(makeKPI("❌", QString::number(annule),                    "Annulés",          "#E74C3C"));
+    mainLay->addLayout(kpiRow);
 
-    // Couleurs
-    sTermine->setBrush(QColor("#10B981"));
-    sEnCours->setBrush(QColor("#F59E0B"));
-    sAnnule->setBrush(QColor("#EF4444"));
-    sAttente->setBrush(QColor("#3B82F6"));
+    QFrame *qteCard = new QFrame();
+    qteCard->setStyleSheet("QFrame { background:white; border-radius:12px; }");
+    QHBoxLayout *qteLay = new QHBoxLayout(qteCard);
+    qteLay->setContentsMargins(20,14,20,14);
+    auto makeStat = [](const QString &lbl, const QString &val) {
+        QVBoxLayout *vl = new QVBoxLayout();
+        QLabel *v = new QLabel(val); v->setAlignment(Qt::AlignCenter);
+        v->setStyleSheet("font-size:20px; font-weight:bold; color:#2C5F7C;");
+        QLabel *l = new QLabel(lbl); l->setAlignment(Qt::AlignCenter);
+        l->setStyleSheet("font-size:11px; color:#6B7280;");
+        vl->addWidget(v); vl->addWidget(l); return vl;
+    };
+    qteLay->addLayout(makeStat("Qté Recyclée (kg)", QString::number(qteTotale,'f',2)));
+    qteLay->addSpacing(30);
+    qteLay->addLayout(makeStat("En attente",         QString::number(enAttente)));
+    mainLay->addWidget(qteCard);
 
-    // Labels %
-    sTermine->setLabel(QString("Terminé %1%").arg((termine * 100.0)/total, 0, 'f', 1));
-    sEnCours->setLabel(QString("En cours %1%").arg((enCours * 100.0)/total, 0, 'f', 1));
-    sAnnule->setLabel(QString("Annulé %1%").arg((annule * 100.0)/total, 0, 'f', 1));
-    sAttente->setLabel(QString("En attente %1%").arg((enAttente * 100.0)/total, 0, 'f', 1));
-
-    sTermine->setLabelVisible(true);
-    sEnCours->setLabelVisible(true);
-    sAnnule->setLabelVisible(true);
-    sAttente->setLabelVisible(true);
-
-    // Animation hover
-    QObject::connect(sTermine, &QPieSlice::hovered, [=](bool state){
-        sTermine->setExploded(state);
-    });
-    QObject::connect(sEnCours, &QPieSlice::hovered, [=](bool state){
-        sEnCours->setExploded(state);
-    });
-    QObject::connect(sAnnule, &QPieSlice::hovered, [=](bool state){
-        sAnnule->setExploded(state);
-    });
-    QObject::connect(sAttente, &QPieSlice::hovered, [=](bool state){
-        sAttente->setExploded(state);
-    });
-
-    // Chart
-    QChart *chart = new QChart();
-    chart->addSeries(series);
-    chart->setTitle("Statuts des recyclages");
-    chart->legend()->setAlignment(Qt::AlignBottom);
-    chart->setAnimationOptions(QChart::SeriesAnimations);
-
-    QChartView *chartView = new QChartView(chart);
-    chartView->setRenderHint(QPainter::Antialiasing);
-    chartView->setStyleSheet("background:transparent;");
-
-    mainLay->addWidget(chartView);
-
-    // Bouton fermer
     QPushButton *closeBtn = new QPushButton("✕  Fermer");
-    closeBtn->setFixedHeight(40);
+    closeBtn->setFixedHeight(42);
     closeBtn->setStyleSheet(
         "QPushButton{background:#2C5F7C;color:white;font-size:14px;font-weight:600;"
         "border:none;border-radius:8px;}"
-        "QPushButton:hover{background:#1B3A57;}"
-        );
+        "QPushButton:hover{background:#1B3A57;}");
     QObject::connect(closeBtn, &QPushButton::clicked, dlg, &QDialog::accept);
-
     mainLay->addWidget(closeBtn);
 
     dlg->exec();

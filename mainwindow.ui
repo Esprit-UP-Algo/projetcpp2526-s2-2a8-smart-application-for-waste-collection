@@ -26,454 +26,7 @@
     <property name="currentIndex">
      <number>2</number>
     </property>
-    <widget class="QWidget" name="page">
-     <widget class="QFrame" name="frame_39">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>0</y>
-        <width>1571</width>
-        <height>901</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: qlineargradient(
-    spread:pad,
-    x1:0, y1:0,
-    x2:0, y2:1,
-    stop:0 #0A1F33,
-    stop:0.5 #163A5F,
-    stop:1 #274C77
-);</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Shape::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Shadow::Raised</enum>
-      </property>
-      <widget class="QFrame" name="frame_40">
-       <property name="geometry">
-        <rect>
-         <x>320</x>
-         <y>190</y>
-         <width>901</width>
-         <height>631</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background: white;
-border-radius: 20px;
-padding: 20px;
-</string>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::Shape::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Raised</enum>
-       </property>
-       <widget class="QLabel" name="label_126">
-        <property name="geometry">
-         <rect>
-          <x>280</x>
-          <y>-10</y>
-          <width>381</width>
-          <height>121</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>26</pointsize>
-          <italic>true</italic>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: #2A3439;
-</string>
-        </property>
-        <property name="text">
-         <string>Récupération</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_127">
-        <property name="geometry">
-         <rect>
-          <x>320</x>
-          <y>80</y>
-          <width>311</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: #2A3439;
-</string>
-        </property>
-        <property name="text">
-         <string>Mot de passe oublié</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lineEdit_38">
-        <property name="geometry">
-         <rect>
-          <x>220</x>
-          <y>460</y>
-          <width>451</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLineEdit {
-    background-color: #F9FBFD;          /* fond clair élégant */
-    border: 2px solid #3A6EA5;           /* bleu marine clair */
-    border-radius: 12px;
-    padding: 10px 14px;
-    color: #0A1F33;                      /* texte bleu marine foncé */
-    font-size: 14px;
-    font-weight: 500;
-}
-
-/* Quand le champ est sélectionné */
-QLineEdit:focus {
-    background-color: white;
-    border: 2px solid #1E3A5F;           /* focus plus foncé */
-}
-
-/* Hover */
-QLineEdit:hover {
-    border: 2px solid #2F5D8A;
-}
-</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_128">
-        <property name="geometry">
-         <rect>
-          <x>210</x>
-          <y>380</y>
-          <width>441</width>
-          <height>101</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>Leelawadee UI</family>
-          <pointsize>11</pointsize>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: #2A3439;
-</string>
-        </property>
-        <property name="text">
-         <string>Adresse email:</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_129">
-        <property name="geometry">
-         <rect>
-          <x>150</x>
-          <y>130</y>
-          <width>611</width>
-          <height>121</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>20</pointsize>
-          <italic>false</italic>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: #2A3439;
-</string>
-        </property>
-        <property name="text">
-         <string>📧Réinitialiser votre mot de passe</string>
-        </property>
-       </widget>
-       <widget class="QFrame" name="frame_41">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>230</y>
-          <width>871</width>
-          <height>151</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: qlineargradient(
-    spread:pad,
-    x1:0, y1:0,
-    x2:0, y2:1,
-    stop:0 #7FB3D5,
-    stop:1 #5DADE2
-);
-
-
-</string>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Shape::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Shadow::Raised</enum>
-        </property>
-        <widget class="QLabel" name="label_130">
-         <property name="geometry">
-          <rect>
-           <x>30</x>
-           <y>0</y>
-           <width>841</width>
-           <height>151</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>11</pointsize>
-           <italic>false</italic>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true"> color: #0A1F33;  </string>
-         </property>
-         <property name="text">
-          <string>ℹ️
-Information importante
-Un email contenant un lien de réinitialisation sera envoyé à l'adresse associée à votre compte. Le lien sera
-valide pendant 1 heure.</string>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QLabel" name="label_131">
-        <property name="geometry">
-         <rect>
-          <x>210</x>
-          <y>500</y>
-          <width>541</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>9</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: #2A3439;
-</string>
-        </property>
-        <property name="text">
-         <string>Entrez l'email ou l'identifiant associé à votre compte</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_7">
-        <property name="geometry">
-         <rect>
-          <x>270</x>
-          <y>560</y>
-          <width>371</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #1B3A2F,
-        stop:0.5 #276646,
-        stop:1 #1E4D36
-    );
-    color: white;
-    font-size: 14px;
-    font-weight: 700;      /* un peu plus bold pour valider */
-    text-transform: uppercase;  /* donne un effet bouton d’action */
-    border: none;
-    border-radius: 12px;
-    padding: 10px 22px;     /* garde la même taille */
-    cursor: pointer;        /* main au survol */
-    transition: all 0.2s ease-in-out; /* effet smooth hover */
-}
-
-/* ✨ Hover : lumière douce */
-QPushButton:hover {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #276646,
-        stop:0.5 #34885A,
-        stop:1 #1B3A2F
-    );
-    transform: scale(1.03);  /* effet léger au survol */
-}
-
-/* 🔘 Click (pressed) */
-QPushButton:pressed {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #1E4D36,
-        stop:1 #1B3A2F
-    );
-    transform: scale(0.98); /* effet click */
-}
-
-/* 🚫 Désactivé */
-QPushButton:disabled {
-    background-color: #A3B7A1;
-    color: #6E7F70;
-    cursor: default;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>envoyer </string>
-        </property>
-       </widget>
-       <zorder>label_129</zorder>
-       <zorder>label_131</zorder>
-       <zorder>label_128</zorder>
-       <zorder>label_126</zorder>
-       <zorder>label_127</zorder>
-       <zorder>lineEdit_38</zorder>
-       <zorder>frame_41</zorder>
-       <zorder>pushButton_7</zorder>
-      </widget>
-      <widget class="QLabel" name="label_132">
-       <property name="geometry">
-        <rect>
-         <x>710</x>
-         <y>60</y>
-         <width>111</width>
-         <height>111</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>48</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-radius: 20px;</string>
-       </property>
-       <property name="text">
-        <string>🔐</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_133">
-       <property name="geometry">
-        <rect>
-         <x>-440</x>
-         <y>-120</y>
-         <width>2141</width>
-         <height>1021</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="pixmap">
-        <pixmap resource="RS7.qrc">:/Downloads/6938839_3409297.jpg</pixmap>
-       </property>
-       <property name="scaledContents">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="retour">
-       <property name="geometry">
-        <rect>
-         <x>1340</x>
-         <y>780</y>
-         <width>141</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>-1</pointsize>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #1B3A2F,
-        stop:0.5 #276646,
-        stop:1 #1E4D36
-    );
-    color: white;
-    font-size: 14px;
-    font-weight: 700;      /* un peu plus bold pour valider */
-    text-transform: uppercase;  /* donne un effet bouton d’action */
-    border: none;
-    border-radius: 12px;
-    padding: 10px 22px;     /* garde la même taille */
-    cursor: pointer;        /* main au survol */
-    transition: all 0.2s ease-in-out; /* effet smooth hover */
-}
-
-/* ✨ Hover : lumière douce */
-QPushButton:hover {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #276646,
-        stop:0.5 #34885A,
-        stop:1 #1B3A2F
-    );
-    transform: scale(1.03);  /* effet léger au survol */
-}
-
-/* 🔘 Click (pressed) */
-QPushButton:pressed {
-    background-color: qlineargradient(
-        x1:0, y1:0,
-        x2:0, y2:1,
-        stop:0 #1E4D36,
-        stop:1 #1B3A2F
-    );
-    transform: scale(0.98); /* effet click */
-}
-
-/* 🚫 Désactivé */
-QPushButton:disabled {
-    background-color: #A3B7A1;
-    color: #6E7F70;
-    cursor: default;
-}
-</string>
-       </property>
-       <property name="text">
-        <string>retour</string>
-       </property>
-      </widget>
-      <zorder>label_133</zorder>
-      <zorder>frame_40</zorder>
-      <zorder>label_132</zorder>
-      <zorder>retour</zorder>
-     </widget>
-    </widget>
+    <widget class="QWidget" name="page"/>
     <widget class="QWidget" name="page_18">
      <widget class="QFrame" name="frame_42">
       <property name="geometry">
@@ -640,7 +193,7 @@ background: transparent;
           <x>140</x>
           <y>140</y>
           <width>441</width>
-          <height>101</height>
+          <height>71</height>
          </rect>
         </property>
         <property name="font">
@@ -669,7 +222,7 @@ background: transparent;
           <x>130</x>
           <y>250</y>
           <width>441</width>
-          <height>91</height>
+          <height>71</height>
          </rect>
         </property>
         <property name="font">
@@ -930,7 +483,7 @@ background: transparent;
        <property name="frameShadow">
         <enum>QFrame::Shadow::Raised</enum>
        </property>
-       <widget class="QPushButton" name="TOURNEE">
+       <widget class="QPushButton" name="COLLECTE">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -998,7 +551,7 @@ QPushButton:disabled {
          <string>🚛tournees</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_36">
+       <widget class="QPushButton" name="EMPLOYE">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -1066,7 +619,7 @@ QPushButton:disabled {
          <string>🧑🏻‍💻employés</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_37">
+       <widget class="QPushButton" name="CLIENT">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -1202,7 +755,7 @@ QPushButton:disabled {
          <string>🚮conteneurs</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="acceuil">
+       <widget class="QPushButton" name="ACCEUIL">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -1270,7 +823,7 @@ QPushButton:disabled {
          <string>💡acceuil</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="recyclage">
+       <widget class="QPushButton" name="RECYCLAGE">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -1338,11 +891,11 @@ QPushButton:disabled {
          <string>♻️recyclage</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="deconnection">
+       <widget class="QPushButton" name="DECONNECTION">
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>780</y>
+          <y>740</y>
           <width>221</width>
           <height>51</height>
          </rect>
@@ -1356,12 +909,12 @@ QPushButton:disabled {
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton {
-    background-color: qlineargradient(
+   background-color: qlineargradient(
         x1:0, y1:0,
         x2:0, y2:1,
-        stop:0 #2C5F7C,
-        stop:0.5 #3A6EA5,
-        stop:1 #1B3A57
+        stop:0 #8B0000,
+        stop:0.5 #A52A2A,
+        stop:1 #5C0000
     );
 
     color: white;
@@ -1425,6 +978,116 @@ QPushButton:disabled {
          <bool>true</bool>
         </property>
        </widget>
+       <widget class="QPushButton" name="paraemploye">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>680</y>
+          <width>221</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>-1</pointsize>
+          <italic>false</italic>
+          <fontweight>DemiBold</fontweight>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #2C5F7C,
+        stop:0.5 #3A6EA5,
+        stop:1 #1B3A57
+    );
+
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+
+    border: none;
+    border-radius: 14px;
+
+    padding: 10px 22px;
+}
+
+/* ✨ HOVER : lumière douce */
+QPushButton:hover {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #3A6EA5,
+        stop:0.5 #4A86C5,
+        stop:1 #2C5F7C
+    );
+}
+
+/* 🔘 CLICK (pressed) */
+QPushButton:pressed {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #1B3A57,
+        stop:1 #2C5F7C
+    );
+}
+
+/* 🚫 Désactivé */
+QPushButton:disabled {
+    background-color: #C8D3DF;
+    color: #6E7F91;
+}
+</string>
+        </property>
+        <property name="text">
+         <string>🛠️ Paramètres</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="assistant">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>630</y>
+          <width>231</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>-1</pointsize>
+          <fontweight>Medium</fontweight>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    background-color: #F9FBFD;          /* fond clair élégant */
+    border: 2px solid #3A6EA5;           /* bleu marine clair */
+    border-radius: 12px;
+    padding: 10px 14px;
+    color: #0A1F33;                      /* texte bleu marine foncé */
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Quand le champ est sélectionné */
+QLineEdit:focus {
+    background-color: white;
+    border: 2px solid #1E3A5F;           /* focus plus foncé */
+}
+
+/* Hover */
+QLineEdit:hover {
+    border: 2px solid #2F5D8A;
+}
+</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
       </widget>
      </widget>
      <widget class="QStackedWidget" name="stackedWidget_2">
@@ -1437,7 +1100,7 @@ QPushButton:disabled {
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>6</number>
       </property>
       <widget class="QWidget" name="page_3">
        <widget class="QFrame" name="frame_6">
@@ -2036,7 +1699,7 @@ QPushButton:disabled {
          <widget class="QPushButton" name="bouttonqrrecyclage">
           <property name="geometry">
            <rect>
-            <x>410</x>
+            <x>420</x>
             <y>10</y>
             <width>131</width>
             <height>51</height>
@@ -2108,7 +1771,7 @@ QPushButton:disabled {
            <x>10</x>
            <y>200</y>
            <width>1201</width>
-           <height>721</height>
+           <height>671</height>
           </rect>
          </property>
          <property name="styleSheet">
@@ -2356,7 +2019,7 @@ QTableWidget::item:alternate, QTableView::item:alternate {
          <property name="geometry">
           <rect>
            <x>240</x>
-           <y>460</y>
+           <y>410</y>
            <width>781</width>
            <height>371</height>
           </rect>
@@ -2459,7 +2122,7 @@ QGroupBox {
 }</string>
          </property>
          <property name="title">
-          <string>                                                          </string>
+          <string/>
          </property>
          <widget class="QComboBox" name="comboTypeDechet">
           <property name="geometry">
@@ -3750,7 +3413,7 @@ QPushButton:disabled {
          <widget class="QPushButton" name="bouttonexporteremp">
           <property name="geometry">
            <rect>
-            <x>850</x>
+            <x>880</x>
             <y>10</y>
             <width>131</width>
             <height>51</height>
@@ -3818,7 +3481,7 @@ QPushButton:disabled {
          <widget class="QPushButton" name="bouttonstatemp">
           <property name="geometry">
            <rect>
-            <x>1000</x>
+            <x>1040</x>
             <y>10</y>
             <width>131</width>
             <height>51</height>
@@ -4890,7 +4553,7 @@ QPushButton:disabled {
          <widget class="QPushButton" name="bouttonexporterconteneur">
           <property name="geometry">
            <rect>
-            <x>850</x>
+            <x>750</x>
             <y>10</y>
             <width>131</width>
             <height>51</height>
@@ -4958,7 +4621,7 @@ QPushButton:disabled {
          <widget class="QPushButton" name="bouttonstatconteneur">
           <property name="geometry">
            <rect>
-            <x>1000</x>
+            <x>1050</x>
             <y>10</y>
             <width>131</width>
             <height>51</height>
@@ -5021,6 +4684,74 @@ QPushButton:disabled {
           </property>
           <property name="text">
            <string>📊statistique</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="bouttonmap">
+          <property name="geometry">
+           <rect>
+            <x>900</x>
+            <y>10</y>
+            <width>131</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>-1</pointsize>
+            <italic>false</italic>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #2C5F7C,
+        stop:0.5 #3A6EA5,
+        stop:1 #1B3A57
+    );
+
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+
+    border: none;
+    border-radius: 14px;
+
+    padding: 10px 22px;
+}
+
+/* ✨ HOVER : lumière douce */
+QPushButton:hover {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #3A6EA5,
+        stop:0.5 #4A86C5,
+        stop:1 #2C5F7C
+    );
+}
+
+/* 🔘 CLICK (pressed) */
+QPushButton:pressed {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #1B3A57,
+        stop:1 #2C5F7C
+    );
+}
+
+/* 🚫 Désactivé */
+QPushButton:disabled {
+    background-color: #C8D3DF;
+    color: #6E7F91;
+}
+</string>
+          </property>
+          <property name="text">
+           <string>map</string>
           </property>
          </widget>
         </widget>
@@ -5321,6 +5052,61 @@ QPushButton:disabled {
           </property>
           <property name="text">
            <string>Trier</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="bouttonpredictionconteneur">
+          <property name="geometry">
+           <rect>
+            <x>420</x>
+            <y>10</y>
+            <width>131</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>-1</pointsize>
+            <italic>false</italic>
+            <fontweight>DemiBold</fontweight>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #276646,
+        stop:0.5 #34885A,
+        stop:1 #1B3A2F
+    );
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 14px;
+    padding: 10px 22px;
+}
+QPushButton:hover {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #34885A,
+        stop:0.5 #42A56F,
+        stop:1 #276646
+    );
+}
+QPushButton:pressed {
+    background-color: qlineargradient(
+        x1:0, y1:0,
+        x2:0, y2:1,
+        stop:0 #1B3A2F,
+        stop:1 #276646
+    );
+}
+</string>
+          </property>
+          <property name="text">
+           <string>🔮 Prédire</string>
           </property>
          </widget>
         </widget>
@@ -6300,7 +6086,7 @@ QTableWidget::item:alternate, QTableView::item:alternate {
          </rect>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>3</number>
         </property>
         <widget class="QWidget" name="page_11">
          <widget class="QFrame" name="frame_11">
