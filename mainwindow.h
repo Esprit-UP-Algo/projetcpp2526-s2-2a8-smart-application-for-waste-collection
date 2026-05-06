@@ -8,8 +8,12 @@
 #include "collecte.h"
 #include "conteneur.h"
 #include "smsclient.h"
-#include "classificationdechet.h"
 #include <QMenu>
+#include "map.h"
+#include "parametres_employe.h"
+#include "mdp_oublier.h"
+#include "ai.h"
+#include "predictionremplissage.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -22,34 +26,34 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+protected:
+    bool eventFilter(QObject *obj, QEvent *event) override;
+    void keyPressEvent(QKeyEvent *event) override;
 
 private slots:
 
     // ================================================================
-    // === SLOTS GÉNÉRAUX (NAVIGATION ENTRE PAGES) ====================
+    // === NAVIGATION =================================================
     // ================================================================
     void on_mdp_clicked();
     void on_cnx_clicked();
     void on_retour_clicked();
-    void on_acceuil_clicked();
-    void on_deconnection_clicked();
-    void on_recyclage_clicked();
+    void on_ACCEUIL_clicked();
+    void on_DECONNECTION_clicked();
+    void on_RECYCLAGE_clicked();
     void on_CONTENEUR_clicked();
-    void on_TOURNEE_clicked();
-    void on_pushButton_44_clicked();
-    void on_pushButton_16_clicked();
-    void on_pushButton_30_clicked();
+    void on_COLLECTE_clicked();
+    void on_EMPLOYE_clicked();
+    void on_CLIENT_clicked();
+    void on_mdp_oublier_clicked();
     void on_frame_20_customContextMenuRequested(const QPoint &pos);
+    void on_btnClassifier_clicked();
+
 
     // ================================================================
     // === MODULE CLIENT ==============================================
     // ================================================================
-    void on_pushButton_36_clicked();
     void on_pushButton_37_clicked();
-    void on_pushButton_rechercher_3_clicked();
-    void on_conn_clicked();
-    void on_dec_clicked();
-
     void on_btntrie_clicked();
     void on_barrerechercheclient_textChanged(const QString &text);
     void on_bouttonajouterclient_clicked();
@@ -58,6 +62,11 @@ private slots:
     void on_bouttonexporterclient_clicked();
     void on_bouttonstatclient_clicked();
     void on_btnsms_clicked();
+    void handleAssistantInput();
+    void showAssistantPopup();
+    void addChatMessage(const QString &who, const QString &msg);
+
+
 
     // ================================================================
     // === MODULE EMPLOYE =============================================
@@ -70,6 +79,7 @@ private slots:
     void on_bouttonrechercheemp_clicked();
     void on_bouttonexporteremp_clicked();
     void on_bouttonstatemp_clicked();
+    void on_paraemploye_clicked();
 
     // ================================================================
     // === MODULE RECYCLAGE ===========================================
@@ -82,7 +92,6 @@ private slots:
     void on_bouttonexporterrecyclage_clicked();
     void on_bouttonstatrecyclage_clicked();
     void on_bouttonqrrecyclage_clicked();
-    void on_btnClassifier_clicked();
 
     // ================================================================
     // === MODULE COLLECTE ============================================
@@ -105,12 +114,9 @@ private slots:
     void on_barrerechercheconteneur_textChanged(const QString &text);
     void on_bouttonexporterconteneur_clicked();
     void on_bouttonstatconteneur_clicked();
+    void on_bouttonmap_clicked();
 
-    // ================================================================
-    // === MODULE TOURNEE =============================================
-    // ================================================================
-    void on_pushButton_38_clicked();
-    void on_pushButton_35_clicked();
+    void on_bouttonpredictionconteneur_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -119,24 +125,31 @@ private:
     void afficherListeClients();
     void afficherWidgetAjoutClient();
     void afficherWidgetModifierClient(Client client);
-    void exporterClientsCSV();
-    void afficherStatistiquesClients();
     Client getClientSelectionne();
     SmsClientMetier *sms;
+    AI ai;
+    QWidget *assistantPopup = nullptr;
+    QVBoxLayout *assistantLayout = nullptr;
+    QString currentModule = "accueil";
+    QJsonObject getSelectedRowData(QTableWidget *table);
+    QJsonArray getTablePreview(QTableWidget *table, int limit = 5);
+    QTableWidget* getActiveTable();
 
     // ── Employe ─────────────────────────────────────────────────────
     void afficherEmployes();
     void afficherWidgetAjoutEmploye();
     void afficherWidgetModifierEmploye();
-    void exporterEmployesCSV();
-    void afficherStatistiquesEmployes();
     Employe getEmployeSelectionne();
-
+    QString m_posteConnecte;
+    QString m_nomConnecte;
+    QString m_emailConnecte;
+    void appliquerRestrictionsPoste();
+    QString m_codeVerification;
+    QString m_emailReset;
     // ── Recyclage ───────────────────────────────────────────────────
     void afficherRecyclages();
     void afficherWidgetAjoutRecyclage();
     void afficherWidgetModifierRecyclage(int idRecyclage);
-    void lancerClassification();
     Recyclage getRecyclageSelectionne();
 
     // ── Collecte ────────────────────────────────────────────────────
@@ -150,6 +163,7 @@ private:
     void afficherWidgetAjoutConteneur();
     void afficherWidgetModifierConteneur(int idConteneur);
     Conteneur getConteneurSelectionne();
+
 
     // ── Utilitaires ─────────────────────────────────────────────────
     void showMessage(QWidget *parent, const QString &titre,

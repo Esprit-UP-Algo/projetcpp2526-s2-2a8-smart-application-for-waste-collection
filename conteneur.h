@@ -1,12 +1,19 @@
 #ifndef CONTENEUR_H
 #define CONTENEUR_H
-
 #include <QString>
 #include <QList>
 #include <QTableWidget>
 #include <QWidget>
 #include <QSqlQuery>
 #include <QSqlError>
+
+/**
+ * Zones géographiques prédéfinies pour la prédiction de remplissage.
+ * - centre      : zone urbaine dense → remplissage rapide
+ * - residentiel : zone résidentielle → remplissage normal
+ * - industriel  : zone industrielle  → remplissage plus lent / variable
+ */
+static const QStringList ZONES_DISPONIBLES = {"centre", "residentiel", "industriel"};
 
 class Conteneur
 {
@@ -16,9 +23,10 @@ public:
               const QString &adresseComplete, const QString &localisationGPS,
               const QString &accepteMenager, const QString &accepteRecyclable,
               const QString &accepteOrganique, const QString &accepteIndustriel,
-              const QString &etat, const QString &dateDerniereCollecte);
+              const QString &etat, const QString &dateDerniereCollecte,
+              const QString &zone = "residentiel");   // ← nouveau paramètre (défaut sûr)
 
-    // Getters
+    // ── Getters ──────────────────────────────────────────────────
     int     getId()                   const;
     double  getCapacite()             const;
     QString getTypePropriete()        const;
@@ -30,8 +38,9 @@ public:
     QString getAccepteIndustriel()    const;
     QString getEtat()                 const;
     QString getDateDerniereCollecte() const;
+    QString getZone()                 const;   // ← nouveau getter
 
-    // Setters
+    // ── Setters ──────────────────────────────────────────────────
     void setId(int id);
     void setCapacite(double v);
     void setTypePropriete(const QString &v);
@@ -43,27 +52,31 @@ public:
     void setAccepteIndustriel(const QString &v);
     void setEtat(const QString &v);
     void setDateDerniereCollecte(const QString &v);
+    void setZone(const QString &v);             // ← nouveau setter
 
-    // CRUD
+    // ── CRUD ─────────────────────────────────────────────────────
     bool ajouter();
     bool modifier();
     static bool supprimer(int id);
     static QList<Conteneur> getAll();
     static Conteneur getById(int id);
 
-    // Validation
+    // ── Vérification FK ──────────────────────────────────────────
+    static int compterLiensConsommer(int id);
+
+    // ── Validation ───────────────────────────────────────────────
     bool estValide() const;
 
-    // Recherche dans QTableWidget (comme Client)
+    // ── Recherche dans QTableWidget ──────────────────────────────
     static void rechercherDansTable(QTableWidget *table, const QString &text);
 
-    // Export liste
+    // ── Export liste ─────────────────────────────────────────────
     void exporterListe(QTableWidget *table);
 
-    // Statistiques
+    // ── Statistiques ─────────────────────────────────────────────
     void afficherStatistiques(QWidget *parent);
 
-    // Tri + filtre dans table
+    // ── Tri + filtre dans table ───────────────────────────────────
     void loadConteneursIntoTable(QTableWidget *table,
                                  const QString &orderBy,
                                  const QString &filterEtat);
@@ -80,6 +93,7 @@ private:
     QString m_accepteIndustriel;
     QString m_etat;
     QString m_dateDerniereCollecte;
+    QString m_zone;   // ← nouveau membre
 };
 
 #endif // CONTENEUR_H
