@@ -46,7 +46,6 @@ Employe::Employe(QString cin, QString nom, QString prenom,
 // ============================================================
 bool Employe::ajouter()
 {
-    // 1. Générer le mot de passe
     QString mdp = Login::genererMotDePasse();
 
     QSqlQuery query;
@@ -69,18 +68,20 @@ bool Employe::ajouter()
     query.bindValue(":mdp",     mdp);
 
     if (!query.exec()) {
-        qDebug() << "Employe::ajouter error:" << query.lastError().text();
+        // LIGNE AJOUTÉE — montre l'erreur Oracle réelle
+        QMessageBox::critical(nullptr, "SQL ERROR",
+                              "Erreur Oracle:\n" + query.lastError().text());
         return false;
     }
 
     QSqlDatabase::database().commit();
 
-    // 2. Envoyer le mot de passe par email
-    Login::envoyerEmail(email, mdp, nom + " " + prenom);
+    try {
+        Login::envoyerEmail(email, mdp, nom + " " + prenom);
+    } catch (...) {}
 
     return true;
-}
-// ============================================================
+}// ============================================================
 // CRUD — afficher (lecture initiale via QSqlQueryModel)
 // ============================================================
 QSqlQueryModel* Employe::afficher()

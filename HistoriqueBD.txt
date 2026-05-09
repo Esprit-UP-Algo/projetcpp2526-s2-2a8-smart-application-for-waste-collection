@@ -1,0 +1,2 @@
+09/05/2026 19:56:05 | UPDATE | ID : 8 | Statut: Terminée, Obs: Gabes
+09/05/2026 19:56:19 | INSERT | ID : 16 | Date: 09/05/2026, Type: Ménager

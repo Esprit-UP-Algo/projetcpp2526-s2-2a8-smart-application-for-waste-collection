@@ -1,6 +1,7 @@
 #include "conteneur.h"
 #include <QSqlQuery>
 #include <QSqlError>
+#include <QSqlRecord>
 #include <QDebug>
 #include <QTableWidget>
 #include <QTableWidgetItem>
@@ -27,19 +28,21 @@ Conteneur::Conteneur()
     m_adresseComplete(""), m_localisationGPS(""),
     m_accepteMenager("Non"), m_accepteRecyclable("Non"),
     m_accepteOrganique("Non"), m_accepteIndustriel("Non"),
-    m_etat(""), m_dateDerniereCollecte("")
+    m_etat(""), m_dateDerniereCollecte(""), m_zone("residentiel")
 {}
 
 Conteneur::Conteneur(int id, double capacite, const QString &typePropriete,
                      const QString &adresseComplete, const QString &localisationGPS,
                      const QString &accepteMenager, const QString &accepteRecyclable,
                      const QString &accepteOrganique, const QString &accepteIndustriel,
-                     const QString &etat, const QString &dateDerniereCollecte)
+                     const QString &etat, const QString &dateDerniereCollecte,
+                     const QString &zone)
     : m_id(id), m_capacite(capacite), m_typePropriete(typePropriete),
     m_adresseComplete(adresseComplete), m_localisationGPS(localisationGPS),
     m_accepteMenager(accepteMenager), m_accepteRecyclable(accepteRecyclable),
     m_accepteOrganique(accepteOrganique), m_accepteIndustriel(accepteIndustriel),
-    m_etat(etat), m_dateDerniereCollecte(dateDerniereCollecte)
+    m_etat(etat), m_dateDerniereCollecte(dateDerniereCollecte),
+    m_zone(zone.isEmpty() ? "residentiel" : zone)
 {}
 
 // ============================================================
@@ -56,6 +59,7 @@ QString Conteneur::getAccepteOrganique()     const { return m_accepteOrganique; 
 QString Conteneur::getAccepteIndustriel()    const { return m_accepteIndustriel; }
 QString Conteneur::getEtat()                 const { return m_etat; }
 QString Conteneur::getDateDerniereCollecte() const { return m_dateDerniereCollecte; }
+QString Conteneur::getZone()                 const { return m_zone; }   // ← nouveau
 
 // ============================================================
 // Setters
@@ -71,6 +75,7 @@ void Conteneur::setAccepteOrganique(const QString &v)    { m_accepteOrganique   
 void Conteneur::setAccepteIndustriel(const QString &v)   { m_accepteIndustriel    = v; }
 void Conteneur::setEtat(const QString &v)                { m_etat                 = v; }
 void Conteneur::setDateDerniereCollecte(const QString &v){ m_dateDerniereCollecte = v; }
+void Conteneur::setZone(const QString &v)                { m_zone                 = v.isEmpty() ? "residentiel" : v; }
 
 // ============================================================
 // Validation
@@ -93,12 +98,13 @@ bool Conteneur::ajouter()
     if (queryId.next()) m_id = queryId.value(0).toInt();
 
     QSqlQuery query;
+    // La colonne ZONE doit exister (voir migration SQL ci-dessous)
     query.prepare(
         "INSERT INTO CONTENEURS (ID_conteneur, Capacite, Type_propriete, "
         "Adresse_complete, Localisation_GPS, Accepte_menager, Accepte_recyclable, "
-        "Accepte_organique, Accepte_industriel, Etat, Date_derniere_collecte) "
+        "Accepte_organique, Accepte_industriel, Etat, Date_derniere_collecte, Zone) "
         "VALUES (:id, :cap, :tprop, :adr, :gps, :men, :rec, :org, :ind, "
-        ":etat, TO_DATE(:date,'DD/MM/YYYY'))"
+        ":etat, TO_DATE(:date,'DD/MM/YYYY'), :zone)"
         );
     query.bindValue(":id",    m_id);
     query.bindValue(":cap",   m_capacite);
@@ -111,6 +117,7 @@ bool Conteneur::ajouter()
     query.bindValue(":ind",   m_accepteIndustriel);
     query.bindValue(":etat",  m_etat);
     query.bindValue(":date",  m_dateDerniereCollecte);
+    query.bindValue(":zone",  m_zone);
     if (!query.exec()) {
         qDebug() << "Conteneur::ajouter error:" << query.lastError().text();
         return false;
@@ -129,7 +136,7 @@ bool Conteneur::modifier()
         "Capacite=:cap, Type_propriete=:tprop, Adresse_complete=:adr, "
         "Localisation_GPS=:gps, Accepte_menager=:men, Accepte_recyclable=:rec, "
         "Accepte_organique=:org, Accepte_industriel=:ind, Etat=:etat, "
-        "Date_derniere_collecte=TO_DATE(:date,'DD/MM/YYYY') "
+        "Date_derniere_collecte=TO_DATE(:date,'DD/MM/YYYY'), Zone=:zone "
         "WHERE ID_conteneur=:id"
         );
     query.bindValue(":cap",   m_capacite);
@@ -142,6 +149,7 @@ bool Conteneur::modifier()
     query.bindValue(":ind",   m_accepteIndustriel);
     query.bindValue(":etat",  m_etat);
     query.bindValue(":date",  m_dateDerniereCollecte);
+    query.bindValue(":zone",  m_zone);
     query.bindValue(":id",    m_id);
     if (!query.exec()) {
         qDebug() << "Conteneur::modifier error:" << query.lastError().text();
@@ -166,7 +174,7 @@ bool Conteneur::supprimer(int id)
 }
 
 // ============================================================
-// CRUD — getAll
+// CRUD — getAll  (lit la nouvelle colonne ZONE)
 // ============================================================
 QList<Conteneur> Conteneur::getAll()
 {
@@ -176,24 +184,40 @@ QList<Conteneur> Conteneur::getAll()
             "SELECT ID_conteneur, Capacite, Type_propriete, Adresse_complete, "
             "Localisation_GPS, Accepte_menager, Accepte_recyclable, "
             "Accepte_organique, Accepte_industriel, Etat, "
-            "TO_CHAR(Date_derniere_collecte,'DD/MM/YYYY') "
-            "FROM CONTENEURS ORDER BY ID_conteneur"))
-        return liste;
-
+            "TO_CHAR(Date_derniere_collecte,'DD/MM/YYYY'), "
+            "NVL(Zone,'residentiel') "
+            "FROM CONTENEURS ORDER BY ID_conteneur"
+        )) {
+        qDebug() << "Conteneur::getAll (with Zone) failed, trying fallback without Zone...";
+        if (!query.exec(
+                "SELECT ID_conteneur, Capacite, Type_propriete, Adresse_complete, "
+                "Localisation_GPS, Accepte_menager, Accepte_recyclable, "
+                "Accepte_organique, Accepte_industriel, Etat, "
+                "TO_CHAR(Date_derniere_collecte,'DD/MM/YYYY') "
+                "FROM CONTENEURS ORDER BY ID_conteneur"
+            )) {
+            qDebug() << "Conteneur::getAll fallback failed:" << query.lastError().text();
+            return liste;
+        }
+    }
     while (query.next()) {
-        Conteneur c(
-            query.value(0).toInt(),
-            query.value(1).toDouble(),
-            query.value(2).toString(),
-            query.value(3).toString(),
-            query.value(4).toString(),
-            query.value(5).toString(),
-            query.value(6).toString(),
-            query.value(7).toString(),
-            query.value(8).toString(),
-            query.value(9).toString(),
-            query.value(10).toString()
-            );
+        Conteneur c;
+        c.setId(query.value(0).toInt());
+        c.setCapacite(query.value(1).toDouble());
+        c.setTypePropriete(query.value(2).toString());
+        c.setAdresseComplete(query.value(3).toString());
+        c.setLocalisationGPS(query.value(4).toString());
+        c.setAccepteMenager(query.value(5).toString());
+        c.setAccepteRecyclable(query.value(6).toString());
+        c.setAccepteOrganique(query.value(7).toString());
+        c.setAccepteIndustriel(query.value(8).toString());
+        c.setEtat(query.value(9).toString());
+        c.setDateDerniereCollecte(query.value(10).toString());
+        if (query.record().count() > 11)
+            c.setZone(query.value(11).toString());
+        else
+            c.setZone("residentiel");
+        
         liste.append(c);
     }
     return liste;
@@ -209,7 +233,8 @@ Conteneur Conteneur::getById(int id)
         "SELECT ID_conteneur, Capacite, Type_propriete, Adresse_complete, "
         "Localisation_GPS, Accepte_menager, Accepte_recyclable, "
         "Accepte_organique, Accepte_industriel, Etat, "
-        "TO_CHAR(Date_derniere_collecte,'DD/MM/YYYY') "
+        "TO_CHAR(Date_derniere_collecte,'DD/MM/YYYY'), "
+        "NVL(Zone,'residentiel') "
         "FROM CONTENEURS WHERE ID_conteneur = :id"
         );
     query.bindValue(":id", id);
@@ -225,94 +250,56 @@ Conteneur Conteneur::getById(int id)
             query.value(7).toString(),
             query.value(8).toString(),
             query.value(9).toString(),
-            query.value(10).toString()
+            query.value(10).toString(),
+            query.value(11).toString()   // zone
             );
     }
     return Conteneur();
 }
 
 // ============================================================
-// Recherche dans QTableWidget (requête préparée côté UI)
+// Vérification FK
+// ============================================================
+int Conteneur::compterLiensConsommer(int id)
+{
+    QSqlQuery q;
+    q.prepare("SELECT COUNT(*) FROM CONSOMMER WHERE ID_conteneur = :id");
+    q.bindValue(":id", id);
+    if (q.exec() && q.next()) return q.value(0).toInt();
+    return 0;
+}
+
+// ============================================================
+// Recherche dans QTableWidget
 // ============================================================
 void Conteneur::rechercherDansTable(QTableWidget *table, const QString &text)
 {
-    if (!table) return;
-    for (int row = 0; row < table->rowCount(); row++) {
+    for (int r = 0; r < table->rowCount(); ++r) {
         bool match = false;
-        for (int col = 0; col < table->columnCount(); col++) {
-            QTableWidgetItem *item = table->item(row, col);
+        for (int c = 0; c < table->columnCount(); ++c) {
+            QTableWidgetItem *item = table->item(r, c);
             if (item && item->text().contains(text, Qt::CaseInsensitive)) {
-                match = true;
-                break;
+                match = true; break;
             }
         }
-        table->setRowHidden(row, !match);
+        table->setRowHidden(r, !match);
     }
 }
 
 // ============================================================
-// Tri + filtre — charge la table depuis la BD (requêtes préparées)
-// ============================================================
-void Conteneur::loadConteneursIntoTable(QTableWidget *table,
-                                        const QString &orderBy,
-                                        const QString &filterEtat)
-{
-    // Protection anti-injection : liste blanche pour ORDER BY
-    QStringList allowed = {"ID_conteneur", "Capacite", "Type_propriete",
-                           "Adresse_complete", "Etat"};
-    QString safeOrder = "ID_conteneur";
-    for (const QString &col : allowed)
-        if (col.compare(orderBy, Qt::CaseInsensitive) == 0) { safeOrder = col; break; }
-
-    QString whereClause;
-    if (!filterEtat.isEmpty())
-        whereClause = "WHERE UPPER(Etat) = UPPER('" + filterEtat + "')";
-
-    QString queryStr = QString(
-                           "SELECT ID_conteneur, Capacite, Type_propriete, Adresse_complete, "
-                           "Localisation_GPS, Accepte_menager, Accepte_recyclable, "
-                           "Accepte_organique, Accepte_industriel, Etat, "
-                           "TO_CHAR(Date_derniere_collecte,'DD/MM/YYYY') "
-                           "FROM CONTENEURS %1 ORDER BY %2"
-                           ).arg(whereClause, safeOrder);
-
-    QSqlQuery q;
-    q.exec(queryStr);
-
-    table->setSortingEnabled(false);
-    table->clearContents();
-    table->setRowCount(0);
-
-    int row = 0;
-    while (q.next()) {
-        table->insertRow(row);
-        for (int col = 0; col < 11; col++)
-            table->setItem(row, col, new QTableWidgetItem(q.value(col).toString()));
-        table->setColumnHidden(0, true);
-        row++;
-    }
-    table->setSortingEnabled(true);
-}
-
-// ============================================================
-// Export liste PDF / Word
+// Export liste (PDF / HTML)
 // ============================================================
 void Conteneur::exporterListe(QTableWidget *table)
 {
-    if (!table) return;
-
-    QStringList options = {"PDF", "Word"};
+    QStringList choices = {"PDF", "HTML"};
     bool ok;
-    QString choice = QInputDialog::getItem(nullptr, "Exporter la liste",
-                                           "Choisir le format :", options, 0, false, &ok);
-    if (!ok || choice.isEmpty()) return;
+    QString choice = QInputDialog::getItem(nullptr, "Format d'export",
+                                           "Choisir le format :", choices, 0, false, &ok);
+    if (!ok) return;
 
-    QString filter = (choice == "PDF") ? "*.pdf" : "*.doc";
+    QString filter = (choice == "PDF") ? "PDF (*.pdf)" : "HTML (*.html)";
     QString fileName = QFileDialog::getSaveFileName(nullptr, "Exporter la liste", "", filter);
     if (fileName.isEmpty()) return;
-
-    if (choice == "PDF" && !fileName.endsWith(".pdf")) fileName += ".pdf";
-    if (choice == "Word" && !fileName.endsWith(".doc")) fileName += ".doc";
 
     QString html;
     html += "<h2>Liste des Conteneurs</h2>";
@@ -381,6 +368,17 @@ void Conteneur::afficherStatistiques(QWidget *parent)
         capMin = q.value(2).toDouble();
     }
 
+    // ── Stats par zone ──────────────────────────────────────────
+    auto countZone = [&](const QString &zone) -> int {
+        q.prepare("SELECT COUNT(*) FROM CONTENEURS WHERE LOWER(NVL(Zone,'residentiel'))=:z");
+        q.bindValue(":z", zone.toLower());
+        if (q.exec() && q.next()) return q.value(0).toInt();
+        return 0;
+    };
+    int zCentre      = countZone("centre");
+    int zResidentiel = countZone("residentiel");
+    int zIndustriel  = countZone("industriel");
+
     auto countOui = [&](const QString &col) -> int {
         if (q.exec(QString("SELECT COUNT(*) FROM CONTENEURS WHERE UPPER(%1)='OUI'").arg(col)) && q.next())
             return q.value(0).toInt();
@@ -391,10 +389,9 @@ void Conteneur::afficherStatistiques(QWidget *parent)
     int organique  = countOui("ACCEPTE_ORGANIQUE");
     int industriel = countOui("ACCEPTE_INDUSTRIEL");
 
-    // ── UI
     QDialog *dlg = new QDialog(parent);
     dlg->setWindowTitle("📊 Statistiques des Conteneurs");
-    dlg->setFixedSize(780, 680);
+    dlg->setFixedSize(820, 760);
     dlg->setStyleSheet("QDialog { background-color: #F0F4F8; }");
 
     QVBoxLayout *mainLay = new QVBoxLayout(dlg);
@@ -409,7 +406,7 @@ void Conteneur::afficherStatistiques(QWidget *parent)
         "border-radius:12px;");
     mainLay->addWidget(title);
 
-    // KPI row
+    // ── KPI état ─────────────────────────────────────────────────
     QHBoxLayout *kpiRow = new QHBoxLayout();
     kpiRow->setSpacing(12);
     auto makeKPI = [](const QString &icon, const QString &value,
@@ -426,13 +423,13 @@ void Conteneur::afficherStatistiques(QWidget *parent)
         cl->addWidget(ico); cl->addWidget(lbl);
         return card;
     };
-    kpiRow->addWidget(makeKPI("🗑️", QString::number(total),          "Total conteneurs",  "#2C5F7C"));
-    kpiRow->addWidget(makeKPI("✅", QString::number(operationnels),  "Opérationnels",     "#27AE60"));
-    kpiRow->addWidget(makeKPI("🔧", QString::number(enMaintenance), "En maintenance",    "#E67E22"));
-    kpiRow->addWidget(makeKPI("❌", QString::number(horsService),   "Hors service",      "#E74C3C"));
+    kpiRow->addWidget(makeKPI("🗑️", QString::number(total),         "Total conteneurs", "#2C5F7C"));
+    kpiRow->addWidget(makeKPI("✅", QString::number(operationnels), "Opérationnels",    "#27AE60"));
+    kpiRow->addWidget(makeKPI("🔧", QString::number(enMaintenance), "En maintenance",   "#E67E22"));
+    kpiRow->addWidget(makeKPI("❌", QString::number(horsService),   "Hors service",     "#E74C3C"));
     mainLay->addLayout(kpiRow);
 
-    // Capacités
+    // ── Capacité ─────────────────────────────────────────────────
     QFrame *capCard = new QFrame();
     capCard->setStyleSheet("QFrame { background:white; border-radius:12px; }");
     QHBoxLayout *capLay = new QHBoxLayout(capCard);
@@ -452,7 +449,40 @@ void Conteneur::afficherStatistiques(QWidget *parent)
     capLay->addLayout(makeStat("Minimum (L)", QString::number(capMin,'f',0)));
     mainLay->addWidget(capCard);
 
-    // Déchets acceptés
+    // ── Stats par zone ───────────────────────────────────────────
+    QFrame *zoneCard = new QFrame();
+    zoneCard->setStyleSheet("QFrame { background:white; border-radius:12px; }");
+    QVBoxLayout *zoneLay = new QVBoxLayout(zoneCard);
+    zoneLay->setContentsMargins(20,14,20,14); zoneLay->setSpacing(10);
+    QLabel *zoneTitle = new QLabel("📍 Répartition par Zone");
+    zoneTitle->setStyleSheet("font-size:13px; font-weight:bold; color:#374151;");
+    zoneLay->addWidget(zoneTitle);
+
+    struct ZoneStat { QString name; int count; QString color; QString emoji; };
+    QList<ZoneStat> zones = {
+        {"Centre",      zCentre,      "#8B5CF6", "🏙️"},
+        {"Résidentiel", zResidentiel, "#3B82F6", "🏘️"},
+        {"Industriel",  zIndustriel,  "#F59E0B", "🏭"},
+    };
+    for (auto &z : zones) {
+        QHBoxLayout *row = new QHBoxLayout();
+        QLabel *nameLbl = new QLabel(z.emoji + " " + z.name); nameLbl->setFixedWidth(110);
+        nameLbl->setStyleSheet("font-size:12px; color:#374151;");
+        QProgressBar *bar = new QProgressBar();
+        bar->setRange(0, total > 0 ? total : 1); bar->setValue(z.count);
+        bar->setTextVisible(false); bar->setFixedHeight(16);
+        bar->setStyleSheet(QString(
+                               "QProgressBar{background:#E5E7EB;border-radius:8px;}"
+                               "QProgressBar::chunk{background:%1;border-radius:8px;}").arg(z.color));
+        QLabel *numLbl = new QLabel(QString::number(z.count) + " / " + QString::number(total));
+        numLbl->setFixedWidth(70); numLbl->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
+        numLbl->setStyleSheet("font-size:11px; color:#6B7280;");
+        row->addWidget(nameLbl); row->addWidget(bar); row->addWidget(numLbl);
+        zoneLay->addLayout(row);
+    }
+    mainLay->addWidget(zoneCard);
+
+    // ── Types de déchets ─────────────────────────────────────────
     QFrame *dechetCard = new QFrame();
     dechetCard->setStyleSheet("QFrame { background:white; border-radius:12px; }");
     QVBoxLayout *dechetLay = new QVBoxLayout(dechetCard);
@@ -475,8 +505,9 @@ void Conteneur::afficherStatistiques(QWidget *parent)
         QProgressBar *bar = new QProgressBar();
         bar->setRange(0, total > 0 ? total : 1); bar->setValue(d.count);
         bar->setTextVisible(false); bar->setFixedHeight(16);
-        bar->setStyleSheet(QString("QProgressBar{background:#E5E7EB;border-radius:8px;}"
-                                   "QProgressBar::chunk{background:%1;border-radius:8px;}").arg(d.color));
+        bar->setStyleSheet(QString(
+                               "QProgressBar{background:#E5E7EB;border-radius:8px;}"
+                               "QProgressBar::chunk{background:%1;border-radius:8px;}").arg(d.color));
         QLabel *numLbl = new QLabel(QString::number(d.count) + " / " + QString::number(total));
         numLbl->setFixedWidth(70); numLbl->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
         numLbl->setStyleSheet("font-size:11px; color:#6B7280;");
@@ -495,4 +526,39 @@ void Conteneur::afficherStatistiques(QWidget *parent)
     mainLay->addWidget(closeBtn);
 
     dlg->exec();
+}
+
+// ============================================================
+// loadConteneursIntoTable  (conservé tel quel, pas d'impact zone)
+// ============================================================
+void Conteneur::loadConteneursIntoTable(QTableWidget *table,
+                                        const QString &orderBy,
+                                        const QString &filterEtat)
+{
+    QString sql =
+        "SELECT ID_conteneur, Capacite, Type_propriete, Adresse_complete, "
+        "Localisation_GPS, Accepte_menager, Accepte_recyclable, "
+        "Accepte_organique, Accepte_industriel, Etat, "
+        "TO_CHAR(Date_derniere_collecte,'DD/MM/YYYY'), NVL(Zone,'residentiel') "
+        "FROM CONTENEURS";
+
+    if (!filterEtat.isEmpty())
+        sql += " WHERE UPPER(Etat)=UPPER('" + filterEtat + "')";
+
+    if (!orderBy.isEmpty())
+        sql += " ORDER BY " + orderBy;
+
+    QSqlQuery query;
+    if (!query.exec(sql)) {
+        qDebug() << "loadConteneursIntoTable error:" << query.lastError().text();
+        return;
+    }
+
+    table->setRowCount(0);
+    while (query.next()) {
+        int row = table->rowCount();
+        table->insertRow(row);
+        for (int col = 0; col < 12; ++col)
+            table->setItem(row, col, new QTableWidgetItem(query.value(col).toString()));
+    }
 }

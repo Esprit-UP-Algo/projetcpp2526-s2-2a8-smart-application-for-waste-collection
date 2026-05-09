@@ -17,6 +17,10 @@
 #include <QLabel>
 #include <QFrame>
 #include <QPushButton>
+#include <QCoreApplication>
+#include <QDateTime>
+#include <QHeaderView>
+#include <QMessageBox>
 
 // ============================================================
 // Constructeurs
@@ -95,6 +99,7 @@ bool Collecte::ajouter()
         qDebug() << "Collecte::ajouter error:" << query.lastError().text();
         return false;
     }
+    enregistrerHistoriqueAction("INSERT", m_id, "Date: " + m_dateCollecte + ", Type: " + m_typeDechet);
     return true;
 }
 
@@ -122,6 +127,7 @@ bool Collecte::modifier()
         qDebug() << "Collecte::modifier error:" << query.lastError().text();
         return false;
     }
+    enregistrerHistoriqueAction("UPDATE", m_id, "Statut: " + m_statut + ", Obs: " + m_observations);
     return true;
 }
 
@@ -137,6 +143,7 @@ bool Collecte::supprimer(int id)
         qDebug() << "Collecte::supprimer error:" << query.lastError().text();
         return false;
     }
+    enregistrerHistoriqueAction("DELETE", id, "Suppression de la collecte #" + QString::number(id));
     return true;
 }
 
@@ -192,6 +199,27 @@ Collecte Collecte::getById(int id)
             );
     }
     return Collecte();
+}
+
+// ============================================================
+// Vérification FK — Architecture Modèle-Vue
+// ============================================================
+int Collecte::compterLiensConsommer(int id)
+{
+    QSqlQuery q;
+    q.prepare("SELECT COUNT(*) FROM CONSOMMER WHERE ID_collecte = :id");
+    q.bindValue(":id", id);
+    if (q.exec() && q.next()) return q.value(0).toInt();
+    return 0;
+}
+
+int Collecte::compterLiensFournir(int id)
+{
+    QSqlQuery q;
+    q.prepare("SELECT COUNT(*) FROM FOURNIR WHERE ID_collecte = :id");
+    q.bindValue(":id", id);
+    if (q.exec() && q.next()) return q.value(0).toInt();
+    return 0;
 }
 
 // ============================================================
@@ -342,7 +370,6 @@ void Collecte::afficherStatistiques(QWidget *parent)
         qteMin   = q.value(2).toDouble();
     }
 
-    // ── UI
     QDialog *dlg = new QDialog(parent);
     dlg->setWindowTitle("📊 Statistiques des Collectes");
     dlg->setFixedSize(780, 620);
@@ -384,7 +411,6 @@ void Collecte::afficherStatistiques(QWidget *parent)
     kpiRow->addWidget(makeKPI("❌", QString::number(annulee),  "Annulées",        "#E74C3C"));
     mainLay->addLayout(kpiRow);
 
-    // Quantités
     QFrame *qteCard = new QFrame();
     qteCard->setStyleSheet("QFrame { background:white; border-radius:12px; }");
     QHBoxLayout *qteLay = new QHBoxLayout(qteCard);
@@ -414,4 +440,94 @@ void Collecte::afficherStatistiques(QWidget *parent)
     mainLay->addWidget(closeBtn);
 
     dlg->exec();
+}
+
+// ============================================================
+// Historique des Actions
+// ============================================================
+
+void Collecte::enregistrerHistoriqueAction(const QString &action, int id, const QString &details)
+{
+    // On force le chemin vers le dossier du projet pour que l'utilisateur le trouve facilement
+    QString path = "C:/Projets/FF/HistoriqueBD.txt"; 
+    QFile file(path);
+    if (file.open(QIODevice::Append | QIODevice::Text)) {
+        QTextStream out(&file);
+        QString timestamp = QDateTime::currentDateTime().toString("dd/MM/yyyy HH:mm:ss");
+        out << timestamp << " | " << action << " | ID : " << id << " | " << details << "\n";
+        file.close();
+        QMessageBox::information(nullptr, "Historique", "Action enregistrée dans l'historique avec succès !");
+    } else {
+        qDebug() << "Failed to open history file for writing:" << path << file.errorString();
+    }
+}
+
+void Collecte::afficherHistorique(QTableWidget *table)
+{
+    Q_UNUSED(table); 
+
+    QDialog *dlg = new QDialog();
+    dlg->setWindowTitle("📜 Historique des Actions (Collecte)");
+    dlg->setMinimumSize(900, 500);
+    dlg->setStyleSheet("QDialog { background-color: #F8FAFC; }");
+
+    QVBoxLayout *layout = new QVBoxLayout(dlg);
+    
+    QLabel *title = new QLabel("📋 Journal des opérations effectuées");
+    title->setStyleSheet("font-size:16px; font-weight:bold; color:#1B3A57; margin-bottom:10px;");
+    layout->addWidget(title);
+
+    QTableWidget *hTable = new QTableWidget();
+    hTable->setColumnCount(4);
+    hTable->setHorizontalHeaderLabels({"📅 Date & Heure", "⚡ Action", "🆔 ID", "📝 Détails"});
+    hTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    hTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    hTable->setSelectionBehavior(QAbstractItemView::SelectRows);
+    hTable->setStyleSheet(R"(
+        QTableWidget { background-color: white; border: 1px solid #E2E8F0; border-radius: 8px; }
+        QHeaderView::section { background-color: #F1F5F9; font-weight: bold; padding: 8px; border: none; border-bottom: 2px solid #CBD5E1; }
+    )");
+
+    QString path = "C:/Projets/FF/HistoriqueBD.txt";
+    QFile file(path);
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QTextStream in(&file);
+        int row = 0;
+        while (!in.atEnd()) {
+            QString line = in.readLine();
+            QStringList parts = line.split(" | ");
+            if (parts.size() >= 4) {
+                hTable->insertRow(row);
+                for (int i = 0; i < 4; i++) {
+                    QString val = parts[i];
+                    if (i == 2) val.replace("ID : ", ""); // Nettoyer pour l'affichage si on veut juste le chiffre, ou laisser tel quel
+                    QTableWidgetItem *item = new QTableWidgetItem(val);
+                    if (i == 1) { // Colonne Action
+                        QString action = parts[i].trimmed().toUpper();
+                        if (action == "INSERT") item->setBackground(QColor("#D1FAE5"));
+                        else if (action == "UPDATE") item->setBackground(QColor("#FEF3C7"));
+                        else if (action == "DELETE") item->setBackground(QColor("#FEE2E2"));
+                    }
+                    hTable->setItem(row, i, item);
+                }
+                row++;
+            }
+        }
+        file.close();
+    }
+
+    layout->addWidget(hTable);
+
+    QPushButton *closeBtn = new QPushButton("Fermer");
+    closeBtn->setFixedWidth(120);
+    closeBtn->setStyleSheet("QPushButton { background-color: #1B3A57; color: white; padding: 8px; border-radius: 5px; }");
+    QObject::connect(closeBtn, &QPushButton::clicked, dlg, &QDialog::accept);
+    
+    QHBoxLayout *btnLay = new QHBoxLayout();
+    btnLay->addStretch();
+    btnLay->addWidget(closeBtn);
+    layout->addLayout(btnLay);
+
+    dlg->exec();
+    delete dlg;
 }

@@ -1,6 +1,5 @@
 #ifndef COLLECTE_H
 #define COLLECTE_H
-
 #include <QString>
 #include <QList>
 #include <QTableWidget>
@@ -41,10 +40,18 @@ public:
     static QList<Collecte> getAll();
     static Collecte getById(int id);
 
+    // Historique
+    static void enregistrerHistoriqueAction(const QString &action, int id, const QString &details);
+    static void afficherHistorique(QTableWidget *table);
+
+    // Vérification FK (Architecture Modèle-Vue)
+    static int compterLiensConsommer(int id);
+    static int compterLiensFournir(int id);
+
     // Validation
     bool estValide() const;
 
-    // Recherche dans QTableWidget (comme Client)
+    // Recherche dans QTableWidget
     static void rechercherDansTable(QTableWidget *table, const QString &text);
 
     // Export liste
